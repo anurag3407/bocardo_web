@@ -1,258 +1,365 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import Image from "next/image";
 import {
   MapPin,
   Search,
-  Clock,
-  ShieldCheck,
-  Bike,
-  Sparkles,
   ArrowRight,
-  CheckCircle2,
-  Percent,
+  ChevronDown,
+  ShoppingBag,
+  ArrowUpRight,
 } from "lucide-react";
 import { useApp } from "@/context/AppContext";
 
 export const HeroSection: React.FC = () => {
-  const { setSelectedAddress, showToast, setIsAddressModalOpen, setSearchQuery } = useApp();
-  const [postcode, setPostcode] = useState("");
-  const [isLocating, setIsLocating] = useState(false);
+  const {
+    selectedAddress,
+    setIsAddressModalOpen,
+    searchQuery,
+    setSearchQuery,
+    setSelectedCategory,
+    setIsPartnerModalOpen,
+    setPartnerModalType,
+    setIsAuthModalOpen,
+    setAuthMode,
+    user,
+    cartCount,
+    setIsCartOpen,
+  } = useApp();
 
-  const handlePostcodeSearch = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!postcode.trim()) {
-      showToast("Please enter a postcode or street address");
-      return;
-    }
-    setSelectedAddress({
-      id: "search-" + Date.now(),
-      label: "Custom Location",
-      address: postcode.toUpperCase() + ", Central Delivery Zone",
-      postcode: postcode.toUpperCase(),
-      icon: "other",
-    });
-    showToast(`📍 Set delivery address to ${postcode.toUpperCase()}`);
+  const handleLocationClick = () => {
+    setIsAddressModalOpen(true);
   };
 
-  const handleUseCurrentLocation = () => {
-    setIsLocating(true);
-    setTimeout(() => {
-      setIsLocating(false);
-      setSelectedAddress({
-        id: "geo-" + Date.now(),
-        label: "Current GPS Location",
-        address: "Piccadilly Circus, London",
-        postcode: "W1J 9HP",
-        icon: "home",
-      });
-      showToast("📍 Located at Piccadilly Circus, London W1J 9HP");
-    }, 600);
+  const handleSearchSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const el = document.getElementById("restaurants-section");
+    el?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const scrollToRestaurants = () => {
+    const el = document.getElementById("restaurants-section");
+    el?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const scrollToApp = () => {
+    const el = document.getElementById("app-launch-section");
+    el?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-white via-[#0bdcfc]/5 to-slate-50/70 border-b border-slate-100 py-12 md:py-16 lg:py-20">
-      {/* Background subtle geometric accents with theme cyan */}
-      <div className="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 rounded-full bg-[#0bdcfc]/10 blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 left-10 w-72 h-72 rounded-full bg-[#9efd21]/10 blur-3xl pointer-events-none" />
+    <section className="relative overflow-hidden bg-gradient-to-b from-[#00b4d8] via-[#0bdcfc] to-[#0096c7] text-white pt-6 pb-20 lg:pt-8 lg:pb-28 select-none">
+      
+      {/* Subtle depth ambient lighting */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_15%,rgba(255,255,255,0.25),transparent_70%)] pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          {/* Left Column: Headline, Location Search, Trust Signals */}
-          <div className="lg:col-span-7 space-y-6">
-            {/* App Launch Pill */}
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-900 text-white text-xs font-semibold shadow-xs">
-              <span className="flex h-2 w-2 relative">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#0bdcfc] opacity-75" />
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-[#0bdcfc]" />
-              </span>
-              <span>Bocardo App Launching Soon</span>
-              <span className="text-slate-400">•</span>
-              <span className="text-[#0bdcfc] font-bold">Get 50% Off First 3 Orders</span>
-            </div>
-
-            {/* Main Headline (Deliveroo styled subtle impact) */}
-            <div className="space-y-3">
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-slate-950 leading-[1.08]">
-                Restaurants, grocery & bakeries.{" "}
-                <span className="relative whitespace-nowrap">
-                  <span className="relative z-10 text-transparent bg-clip-text bg-gradient-to-r from-slate-950 via-[#0891b2] to-[#00bcd4]">
-                    Delivered.
-                  </span>
-                  <span className="absolute bottom-1.5 left-0 w-full h-3 bg-[#0bdcfc]/30 -z-10 rounded-sm" />
+      {/* Top Navigation Row (Integrated directly inside Hero like Swiggy) */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-30 mb-12 sm:mb-16">
+        <div className="flex items-center justify-between h-16">
+          
+          {/* Left: Bocardo Brand Logo & Wordmark in White */}
+          <div className="flex items-center gap-3">
+            <a href="#" className="flex items-center gap-3 group">
+              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white shadow-md flex items-center justify-center p-1 overflow-hidden transition-transform group-hover:scale-105">
+                <Image
+                  src="/logo-circle.png"
+                  alt="Bocardo Logo"
+                  width={44}
+                  height={44}
+                  className="object-contain"
+                  priority
+                />
+              </div>
+              <div className="flex items-center gap-1.5">
+                <span className="font-black text-2xl sm:text-3xl text-white tracking-tight drop-shadow-xs">
+                  bocardo
                 </span>
-              </h1>
-              <p className="text-base sm:text-lg text-slate-600 max-w-xl font-normal leading-relaxed">
-                From hot artisan sourdough pizzas and dry-aged smashed burgers to fresh morning viennoiseries.
-                Brought directly to your doorstep in as little as 20 minutes.
-              </p>
-            </div>
-
-            {/* Deliveroo-Style Postcode Search Box */}
-            <div className="bg-white rounded-2xl p-2.5 sm:p-3 shadow-md border border-slate-200/80 max-w-xl">
-              <form onSubmit={handlePostcodeSearch} className="flex flex-col sm:flex-row items-stretch gap-2">
-                <div className="relative flex-1 flex items-center">
-                  <div className="absolute left-3.5 text-slate-400 pointer-events-none">
-                    <MapPin className="w-5 h-5 text-[#0891b2]" />
-                  </div>
-                  <input
-                    type="text"
-                    value={postcode}
-                    onChange={(e) => setPostcode(e.target.value)}
-                    placeholder="Enter your postcode (e.g. W1U 3BL or SW1)"
-                    className="w-full pl-11 pr-4 py-3 text-sm text-slate-900 placeholder-slate-400 bg-transparent outline-none font-medium"
-                  />
-                </div>
-
-                <div className="flex items-center gap-2">
-                  <button
-                    type="button"
-                    onClick={handleUseCurrentLocation}
-                    disabled={isLocating}
-                    className="p-3 text-xs font-semibold text-slate-700 hover:text-slate-950 bg-slate-100 hover:bg-slate-200 rounded-xl transition-colors flex items-center gap-1.5 whitespace-nowrap"
-                    title="Use my current GPS location"
-                  >
-                    <Bike className={`w-4 h-4 ${isLocating ? "animate-spin text-[#0891b2]" : "text-slate-600"}`} />
-                    <span className="hidden sm:inline">{isLocating ? "Locating..." : "Locate Me"}</span>
-                  </button>
-
-                  <button
-                    type="submit"
-                    className="px-6 py-3 text-sm font-bold bg-[#0bdcfc] hover:bg-[#00caeb] active:scale-95 text-slate-950 rounded-xl shadow-xs transition-all flex items-center justify-center gap-2 whitespace-nowrap"
-                  >
-                    <span>Search Food</span>
-                    <ArrowRight className="w-4 h-4" />
-                  </button>
-                </div>
-              </form>
-            </div>
-
-            {/* Quick Suggestions / Popular Postcodes */}
-            <div className="flex flex-wrap items-center gap-2 pt-1 text-xs text-slate-500">
-              <span className="font-semibold text-slate-400">Popular areas:</span>
-              {["Soho W1", "Marylebone NW1", "Covent Garden WC2", "Chelsea SW3", "City EC2"].map((area) => (
-                <button
-                  key={area}
-                  type="button"
-                  onClick={() => {
-                    setPostcode(area);
-                    setSelectedAddress({
-                      id: "area-" + area,
-                      label: area,
-                      address: area + ", London",
-                      postcode: area,
-                      icon: "other",
-                    });
-                    showToast(`Selected area: ${area}`);
-                  }}
-                  className="px-2.5 py-1 rounded-md bg-white border border-slate-200 hover:border-[#0bdcfc] hover:text-[#0891b2] font-medium transition-colors"
-                >
-                  {area}
-                </button>
-              ))}
-            </div>
-
-            {/* Subtle Deliveroo/Swiggy Feature Micro-Badges */}
-            <div className="grid grid-cols-3 gap-4 pt-4 border-t border-slate-200/60 max-w-xl">
-              <div className="flex items-center gap-2.5">
-                <div className="w-8 h-8 rounded-lg bg-[#0bdcfc]/15 text-[#0891b2] flex items-center justify-center flex-shrink-0">
-                  <Clock className="w-4 h-4" />
-                </div>
-                <div>
-                  <div className="text-xs font-bold text-slate-900">24 mins</div>
-                  <div className="text-[11px] text-slate-500">Avg Delivery</div>
-                </div>
+                <span className="w-2 h-2 rounded-full bg-[#9efd21] shadow-xs" />
               </div>
-
-              <div className="flex items-center gap-2.5">
-                <div className="w-8 h-8 rounded-lg bg-[#9efd21]/20 text-emerald-700 flex items-center justify-center flex-shrink-0">
-                  <Percent className="w-4 h-4" />
-                </div>
-                <div>
-                  <div className="text-xs font-bold text-slate-900">Bocardo Pass</div>
-                  <div className="text-[11px] text-slate-500">£0 Delivery Fee</div>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-2.5">
-                <div className="w-8 h-8 rounded-lg bg-amber-50 text-amber-600 flex items-center justify-center flex-shrink-0">
-                  <ShieldCheck className="w-4 h-4" />
-                </div>
-                <div>
-                  <div className="text-xs font-bold text-slate-900">5-Star Hygiene</div>
-                  <div className="text-[11px] text-slate-500">Verified Kitchens</div>
-                </div>
-              </div>
-            </div>
+            </a>
           </div>
 
-          {/* Right Column: Subtle Dish Showcase with Clean Transparent Food Assets */}
-          <div className="lg:col-span-5 relative flex items-center justify-center">
-            {/* Soft decorative halo matching Bocardo cyan and lime */}
-            <div className="relative w-full max-w-[440px] aspect-square rounded-full bg-gradient-to-tr from-[#0bdcfc]/20 via-[#0bdcfc]/5 to-[#9efd21]/15 p-6 flex items-center justify-center">
-              
-              {/* Inner ring */}
-              <div className="w-full h-full rounded-full border border-dashed border-[#0bdcfc]/30 flex items-center justify-center relative">
-                
-                {/* Main Hero Dish: Smashed Burger cutout */}
-                <div className="relative w-64 h-64 sm:w-72 sm:h-72 transition-transform duration-500 hover:scale-105 select-none drop-shadow-xl">
-                  <Image
-                    src="/food/burger.png"
-                    alt="Bocardo Artisan Double Smashed Burger"
-                    fill
-                    sizes="(max-width: 768px) 100vw, 350px"
-                    className="object-contain"
-                    priority
-                  />
-                </div>
+          {/* Right: Actions matching Swiggy */}
+          <div className="flex items-center gap-4 sm:gap-6">
+            <button
+              type="button"
+              onClick={() => {
+                setPartnerModalType("corporate");
+                setIsPartnerModalOpen(true);
+              }}
+              className="hidden md:inline-block text-xs lg:text-sm font-bold text-white/95 hover:text-white transition-colors"
+            >
+              Bocardo Corporate
+            </button>
 
-                {/* Secondary Offset Dish: Napoli Pizza cutout */}
-                <div className="absolute -bottom-4 -left-6 w-36 h-36 sm:w-44 sm:h-44 transition-transform duration-500 hover:scale-105 drop-shadow-lg">
-                  <Image
-                    src="/food/pizza.png"
-                    alt="Napoli Sourdough Pizza"
-                    fill
-                    sizes="(max-width: 768px) 100vw, 200px"
-                    className="object-contain"
-                  />
-                </div>
+            <button
+              type="button"
+              onClick={() => {
+                setPartnerModalType("restaurant");
+                setIsPartnerModalOpen(true);
+              }}
+              className="hidden sm:inline-block text-xs lg:text-sm font-bold text-white/95 hover:text-white transition-colors"
+            >
+              Partner with us
+            </button>
 
-                {/* Subtle Order Status Card (Deliveroo / Swiggy subtle style) */}
-                <div className="absolute top-2 right-0 bg-white/95 backdrop-blur-md rounded-2xl p-3.5 shadow-lg border border-slate-100 max-w-[210px] space-y-2">
-                  <div className="flex items-center justify-between">
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-[#0891b2] bg-[#0bdcfc]/15 px-2 py-0.5 rounded-full">
-                      Live Order #BC-49
-                    </span>
-                    <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                  </div>
-                  <div className="text-xs font-bold text-slate-900">
-                    On the way to Marylebone
-                  </div>
-                  <div className="flex items-center justify-between text-[11px] text-slate-500">
-                    <span>Est. arrival</span>
-                    <strong className="text-slate-900 font-bold">14 mins</strong>
-                  </div>
-                  <div className="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden">
-                    <div className="bg-[#0bdcfc] h-full rounded-full w-3/4" />
-                  </div>
-                </div>
+            {/* "Get the App ↗" outlined rounded pill button */}
+            <button
+              type="button"
+              onClick={scrollToApp}
+              className="hidden sm:inline-flex items-center gap-1.5 px-4 sm:px-5 py-2 rounded-full border-2 border-white/90 text-white font-extrabold text-xs lg:text-sm hover:bg-white/15 transition-all active:scale-95 shadow-xs"
+            >
+              <span>Get the App</span>
+              <ArrowUpRight className="w-4 h-4" />
+            </button>
 
-                {/* Quality Seal Pill */}
-                <div className="absolute bottom-4 right-4 bg-white/95 backdrop-blur-md rounded-xl px-3 py-2 shadow-md border border-slate-100 flex items-center gap-2">
-                  <div className="w-6 h-6 rounded-full bg-[#ffcc02] text-slate-950 font-black text-xs flex items-center justify-center">
-                    ★
-                  </div>
-                  <div>
-                    <div className="text-xs font-extrabold text-slate-900">4.9 / 5.0</div>
-                    <div className="text-[10px] text-slate-400">12,000+ reviews</div>
-                  </div>
+            {/* "Sign in" solid dark pill button */}
+            {user ? (
+              <div className="flex items-center gap-2 px-3.5 py-2 rounded-full bg-slate-950 text-white text-xs font-bold shadow-md">
+                <div className="w-5 h-5 rounded-full bg-[#0bdcfc] text-slate-950 flex items-center justify-center font-black text-[11px]">
+                  {user.name.charAt(0)}
                 </div>
-
+                <span className="hidden sm:inline">{user.name}</span>
               </div>
-            </div>
+            ) : (
+              <button
+                type="button"
+                onClick={() => {
+                  setAuthMode("login");
+                  setIsAuthModalOpen(true);
+                }}
+                className="px-5 sm:px-6 py-2 sm:py-2.5 rounded-full bg-slate-950 hover:bg-slate-900 text-white font-black text-xs sm:text-sm shadow-md transition-all active:scale-95"
+              >
+                Sign in
+              </button>
+            )}
+
+            {/* Basket icon button */}
+            <button
+              type="button"
+              onClick={() => setIsCartOpen(true)}
+              className="relative p-2.5 rounded-full bg-white text-slate-950 shadow-md hover:bg-slate-50 transition-transform active:scale-95"
+              aria-label="View basket"
+            >
+              <ShoppingBag className="w-4 h-4" />
+              {cartCount > 0 && (
+                <span className="absolute -top-1 -right-1 bg-slate-950 text-white text-[10px] font-black w-4 h-4 rounded-full flex items-center justify-center">
+                  {cartCount}
+                </span>
+              )}
+            </button>
           </div>
+
         </div>
+      </div>
+
+      {/* Flanking Left Visual: Wood-fired Artisan Pizza on edge (Pure food delivery, no grocery!) */}
+      <div className="hidden lg:block absolute left-0 bottom-8 xl:bottom-12 -translate-x-10 xl:-translate-x-6 w-60 xl:w-76 pointer-events-none select-none z-10 transition-transform duration-500">
+        <Image
+          src="/hero/pizza_slice_flank.png"
+          alt="Fresh artisan pizza"
+          width={320}
+          height={380}
+          className="object-contain drop-shadow-[0_20px_35px_rgba(0,0,0,0.3)]"
+          priority
+        />
+      </div>
+
+      {/* Flanking Right Visual: Sushi feast platter (Pure food delivery) */}
+      <div className="hidden lg:block absolute right-0 top-16 xl:top-20 translate-x-8 xl:translate-x-6 w-68 xl:w-88 pointer-events-none select-none z-10 transition-transform duration-500">
+        <Image
+          src="/hero/sushi_tray_clean.png"
+          alt="Sushi feast platter"
+          width={380}
+          height={300}
+          className="object-contain drop-shadow-[0_20px_35px_rgba(0,0,0,0.3)]"
+          priority
+        />
+      </div>
+
+      {/* Main Center Content Container */}
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 relative z-20 text-center">
+        
+        {/* Creative "Coming Soon" Pill Badge */}
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/20 backdrop-blur-md border border-white/30 text-white text-xs font-black tracking-wider uppercase mb-6 shadow-xs">
+          <span className="w-2 h-2 rounded-full bg-[#9efd21] shadow-xs" />
+          <span>COMING SOON • PRE-REGISTER FOR 50% OFF FIRST 3 DELIVERIES</span>
+        </div>
+
+        {/* Main Swiggy-Style Creative Headline */}
+        <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight leading-[1.12] max-w-4xl mx-auto drop-shadow-sm mb-10">
+          Order food. Discover best restaurants.{" "}
+          <span className="text-slate-950 bg-white/95 px-3.5 py-0.5 rounded-2xl inline-block shadow-sm">
+            Bocardo it!
+          </span>
+        </h1>
+
+        {/* Dual-Segment Search Bar Pill (Exact Swiggy reference) */}
+        <div className="max-w-3xl mx-auto bg-white rounded-2xl sm:rounded-full p-2 sm:p-2.5 shadow-2xl border border-white/60 mb-14 sm:mb-16">
+          <form
+            onSubmit={handleSearchSubmit}
+            className="flex flex-col sm:flex-row items-stretch sm:items-center text-slate-800"
+          >
+            {/* Left Segment: Delivery Location dropdown trigger */}
+            <button
+              type="button"
+              onClick={handleLocationClick}
+              className="flex items-center gap-2.5 px-4 py-2.5 text-left hover:bg-slate-50 rounded-xl sm:rounded-l-full sm:rounded-r-none transition-colors sm:max-w-[280px] w-full"
+            >
+              <div className="w-7 h-7 rounded-lg bg-[#0bdcfc]/15 text-[#0891b2] flex items-center justify-center flex-shrink-0">
+                <MapPin className="w-4 h-4" />
+              </div>
+              <div className="flex-1 min-w-0">
+                <div className="text-[10px] uppercase font-bold text-slate-400 tracking-wider">
+                  Deliver to
+                </div>
+                <div className="text-xs sm:text-sm font-bold text-slate-900 truncate flex items-center gap-1">
+                  <span>{selectedAddress.address || "Enter delivery location"}</span>
+                  <ChevronDown className="w-3.5 h-3.5 text-slate-400 flex-shrink-0" />
+                </div>
+              </div>
+            </button>
+
+            {/* Subtle Divider */}
+            <div className="hidden sm:block w-px h-8 bg-slate-200 mx-2 flex-shrink-0" />
+
+            {/* Right Segment: Search for restaurant, dish or cuisine */}
+            <div className="flex-1 flex items-center px-4 py-2">
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder="Search for restaurant, dish or cuisine..."
+                className="w-full text-xs sm:text-sm text-slate-900 placeholder-slate-400 outline-none font-medium bg-transparent"
+              />
+              <button
+                type="submit"
+                className="w-8 h-8 rounded-full bg-slate-100 hover:bg-[#0bdcfc] text-slate-700 hover:text-slate-950 flex items-center justify-center transition-colors flex-shrink-0 ml-2"
+                aria-label="Search"
+              >
+                <Search className="w-4 h-4" />
+              </button>
+            </div>
+          </form>
+        </div>
+
+        {/* 3 Handmade Minimalistic Cards (Pure Food Delivery: Restaurants, Gourmet & Bakeries, Bocardo Pass) */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto text-left">
+          
+          {/* Card 1: FOOD DELIVERY */}
+          <div
+            onClick={scrollToRestaurants}
+            className="group relative bg-white rounded-3xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1.5 cursor-pointer overflow-hidden flex flex-col justify-between min-h-[220px] border border-white/60"
+          >
+            <div>
+              <h3 className="text-xl font-black text-slate-950 tracking-tight leading-none mb-1">
+                FOOD DELIVERY
+              </h3>
+              <p className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-3">
+                FROM RESTAURANTS
+              </p>
+              <div className="inline-block bg-[#ff9800]/10 border border-[#ff9800]/20 text-[#e65100] text-[11px] font-black uppercase px-2.5 py-1 rounded-md">
+                UPTO 50% OFF
+              </div>
+            </div>
+
+            {/* Bottom Row: Arrow button and Cutout Dish */}
+            <div className="flex items-end justify-between mt-4">
+              <div className="w-10 h-10 rounded-full bg-[#0bdcfc] group-hover:bg-[#00caeb] text-slate-950 flex items-center justify-center shadow-md transition-transform group-hover:scale-110">
+                <ArrowRight className="w-5 h-5 stroke-[2.5]" />
+              </div>
+
+              {/* Cutout Food Dish: Double Smash Burger */}
+              <div className="relative w-28 h-28 -mr-2 -mb-2 group-hover:scale-105 transition-transform duration-300">
+                <Image
+                  src="/food/burger.png"
+                  alt="Food Delivery"
+                  fill
+                  sizes="120px"
+                  className="object-contain drop-shadow-md"
+                />
+              </div>
+            </div>
+          </div>
+
+          {/* Card 2: GOURMET & CAFES */}
+          <div
+            onClick={() => {
+              setSelectedCategory("dessert");
+              scrollToRestaurants();
+            }}
+            className="group relative bg-white rounded-3xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1.5 cursor-pointer overflow-hidden flex flex-col justify-between min-h-[220px] border border-white/60"
+          >
+            <div>
+              <h3 className="text-xl font-black text-slate-950 tracking-tight leading-none mb-1">
+                GOURMET & CAFES
+              </h3>
+              <p className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-3">
+                BAKERIES & DESSERTS
+              </p>
+              <div className="inline-block bg-[#ff9800]/10 border border-[#ff9800]/20 text-[#e65100] text-[11px] font-black uppercase px-2.5 py-1 rounded-md">
+                FRESH & HOT
+              </div>
+            </div>
+
+            {/* Bottom Row: Arrow button and Cutout Bakery / Dessert */}
+            <div className="flex items-end justify-between mt-4">
+              <div className="w-10 h-10 rounded-full bg-[#0bdcfc] group-hover:bg-[#00caeb] text-slate-950 flex items-center justify-center shadow-md transition-transform group-hover:scale-110">
+                <ArrowRight className="w-5 h-5 stroke-[2.5]" />
+              </div>
+
+              {/* Cutout Dessert / Lava Tart */}
+              <div className="relative w-28 h-28 -mr-2 -mb-2 group-hover:scale-105 transition-transform duration-300">
+                <Image
+                  src="/food/dessert.png"
+                  alt="Gourmet & Cafes"
+                  fill
+                  sizes="120px"
+                  className="object-contain drop-shadow-md"
+                />
+              </div>
+            </div>
+          </div>
+
+          {/* Card 3: BOCARDO PASS */}
+          <div
+            onClick={scrollToApp}
+            className="group relative bg-white rounded-3xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1.5 cursor-pointer overflow-hidden flex flex-col justify-between min-h-[220px] border border-white/60"
+          >
+            <div>
+              <h3 className="text-xl font-black text-slate-950 tracking-tight leading-none mb-1">
+                BOCARDO PASS
+              </h3>
+              <p className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-3">
+                UNLIMITED £0 DELIVERY
+              </p>
+              <div className="inline-block bg-[#ff9800]/10 border border-[#ff9800]/20 text-[#e65100] text-[11px] font-black uppercase px-2.5 py-1 rounded-md">
+                VIP LAUNCH PERK
+              </div>
+            </div>
+
+            {/* Bottom Row: Arrow button and Cutout Biryani / Bowl */}
+            <div className="flex items-end justify-between mt-4">
+              <div className="w-10 h-10 rounded-full bg-[#0bdcfc] group-hover:bg-[#00caeb] text-slate-950 flex items-center justify-center shadow-md transition-transform group-hover:scale-110">
+                <ArrowRight className="w-5 h-5 stroke-[2.5]" />
+              </div>
+
+              {/* Cutout Food Bowl */}
+              <div className="relative w-28 h-28 -mr-2 -mb-2 group-hover:scale-105 transition-transform duration-300">
+                <Image
+                  src="/food/biryani.png"
+                  alt="Bocardo Pass"
+                  fill
+                  sizes="120px"
+                  className="object-contain drop-shadow-md"
+                />
+              </div>
+            </div>
+          </div>
+
+        </div>
+
       </div>
     </section>
   );

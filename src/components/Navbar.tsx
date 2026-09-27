@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   MapPin,
   Search,
@@ -36,34 +36,44 @@ export const Navbar: React.FC = () => {
   } = useApp();
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 420) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
-    <header className="sticky top-0 z-40 w-full bg-white/95 backdrop-blur-md border-b border-slate-100 transition-all">
-      {/* Top subtle announcement bar */}
-      <div className="bg-[#0bdcfc] text-slate-900 text-xs font-semibold py-1.5 px-4 text-center flex items-center justify-center gap-2">
-        <Sparkles className="w-3.5 h-3.5 text-slate-900" />
-        <span>
-          Bocardo iOS & Android Apps Launching Soon! Pre-register now for 50% OFF your first 3 orders with code{" "}
-          <strong className="underline underline-offset-2 tracking-wide font-black">BOCARDO50</strong>
-        </span>
-      </div>
-
+    <header
+      className={`fixed top-0 inset-x-0 z-40 w-full transition-all duration-300 ${
+        isScrolled
+          ? "translate-y-0 opacity-100 pointer-events-auto bg-white/95 backdrop-blur-md border-b border-slate-100 shadow-xs"
+          : "-translate-y-full opacity-0 pointer-events-none"
+      }`}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20 gap-4">
+        <div className="flex items-center justify-between h-16 sm:h-20 gap-4">
           {/* Logo & Delivery Mode */}
           <div className="flex items-center gap-6">
             <a href="#" className="flex-shrink-0">
-              <BocardoLogo size={42} showText={true} />
+              <BocardoLogo size={38} showText={true} />
             </a>
 
-            {/* Delivery / Collection Toggle (Deliveroo / Swiggy style) */}
+            {/* Delivery / Collection Toggle */}
             <div className="hidden md:flex items-center bg-slate-100/90 p-1 rounded-full text-xs font-semibold">
               <button
                 type="button"
                 onClick={() => setDeliveryType("delivery")}
                 className={`px-3.5 py-1.5 rounded-full transition-all flex items-center gap-1.5 ${
                   deliveryType === "delivery"
-                    ? "bg-[#0bdcfc] text-slate-900 shadow-xs"
+                    ? "bg-[#0bdcfc] text-slate-900 shadow-xs font-bold"
                     : "text-slate-600 hover:text-slate-900"
                 }`}
               >
@@ -75,7 +85,7 @@ export const Navbar: React.FC = () => {
                 onClick={() => setDeliveryType("collection")}
                 className={`px-3.5 py-1.5 rounded-full transition-all ${
                   deliveryType === "collection"
-                    ? "bg-[#0bdcfc] text-slate-900 shadow-xs"
+                    ? "bg-[#0bdcfc] text-slate-900 shadow-xs font-bold"
                     : "text-slate-600 hover:text-slate-900"
                 }`}
               >
@@ -87,13 +97,13 @@ export const Navbar: React.FC = () => {
             <button
               type="button"
               onClick={() => setIsAddressModalOpen(true)}
-              className="hidden lg:flex items-center gap-2 text-left px-3 py-1.5 rounded-xl hover:bg-slate-50 border border-transparent hover:border-slate-200 transition-all max-w-[240px]"
+              className="hidden lg:flex items-center gap-2 text-left px-3 py-1.5 rounded-xl hover:bg-slate-50 border border-transparent hover:border-slate-200 transition-all max-w-[220px]"
             >
               <div className="w-8 h-8 rounded-lg bg-[#0bdcfc]/15 text-[#0891b2] flex items-center justify-center flex-shrink-0">
                 <MapPin className="w-4 h-4" />
               </div>
               <div className="overflow-hidden">
-                <div className="text-[11px] uppercase font-bold text-slate-400 tracking-wider">
+                <div className="text-[10px] uppercase font-bold text-slate-400 tracking-wider">
                   Deliver to
                 </div>
                 <div className="text-xs font-semibold text-slate-800 truncate flex items-center gap-1">
@@ -115,7 +125,7 @@ export const Navbar: React.FC = () => {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Dishes, restaurants, groceries..."
-                className="w-full pl-10 pr-4 py-2.5 bg-slate-50 hover:bg-slate-100/70 focus:bg-white text-sm text-slate-900 placeholder-slate-400 rounded-full border border-slate-200 focus:border-[#0bdcfc] focus:ring-2 focus:ring-[#0bdcfc]/20 outline-none transition-all"
+                className="w-full pl-10 pr-4 py-2 bg-slate-50 hover:bg-slate-100/70 focus:bg-white text-xs sm:text-sm text-slate-900 placeholder-slate-400 rounded-full border border-slate-200 focus:border-[#0bdcfc] outline-none transition-all"
               />
               {searchQuery && (
                 <button
@@ -145,7 +155,7 @@ export const Navbar: React.FC = () => {
             {/* Auth / Account */}
             {user ? (
               <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-100 text-xs font-semibold text-slate-800">
-                <div className="w-6 h-6 rounded-full bg-[#0bdcfc] text-slate-900 flex items-center justify-center font-bold text-xs">
+                <div className="w-6 h-6 rounded-full bg-[#0bdcfc] text-slate-950 flex items-center justify-center font-bold text-xs">
                   {user.name.charAt(0)}
                 </div>
                 <span className="hidden sm:inline">{user.name}</span>
@@ -164,7 +174,7 @@ export const Navbar: React.FC = () => {
               </button>
             )}
 
-            {/* Cart Button with Deliveroo / Swiggy Pill Badge */}
+            {/* Cart Button */}
             <button
               type="button"
               onClick={() => setIsCartOpen(true)}
@@ -226,26 +236,6 @@ export const Navbar: React.FC = () => {
                 <MapPin className="w-4 h-4 text-[#0891b2]" />
                 <span className="truncate max-w-[200px]">{selectedAddress.address}</span>
               </button>
-              <div className="flex bg-slate-100 rounded-full p-0.5 text-[11px]">
-                <button
-                  type="button"
-                  onClick={() => setDeliveryType("delivery")}
-                  className={`px-2.5 py-1 rounded-full ${
-                    deliveryType === "delivery" ? "bg-[#0bdcfc] text-slate-900 font-bold" : "text-slate-600"
-                  }`}
-                >
-                  Delivery
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setDeliveryType("collection")}
-                  className={`px-2.5 py-1 rounded-full ${
-                    deliveryType === "collection" ? "bg-[#0bdcfc] text-slate-900 font-bold" : "text-slate-600"
-                  }`}
-                >
-                  Collection
-                </button>
-              </div>
             </div>
 
             <button
@@ -261,29 +251,6 @@ export const Navbar: React.FC = () => {
                 Track Live Order Demo
               </span>
               <span className="w-2 h-2 rounded-full bg-emerald-500" />
-            </button>
-
-            <button
-              type="button"
-              onClick={() => {
-                setPartnerModalType("restaurant");
-                setIsPartnerModalOpen(true);
-                setIsMobileMenuOpen(false);
-              }}
-              className="w-full text-left px-3 py-2 text-xs font-semibold text-slate-700 hover:bg-slate-50 rounded-lg"
-            >
-              Partner with Bocardo (Restaurants)
-            </button>
-            <button
-              type="button"
-              onClick={() => {
-                setPartnerModalType("rider");
-                setIsPartnerModalOpen(true);
-                setIsMobileMenuOpen(false);
-              }}
-              className="w-full text-left px-3 py-2 text-xs font-semibold text-slate-700 hover:bg-slate-50 rounded-lg"
-            >
-              Ride with Bocardo
             </button>
           </div>
         )}

@@ -2,35 +2,33 @@
 
 import React from "react";
 import Image from "next/image";
-import { Plus, Minus, Check, Flame, Sparkles } from "lucide-react";
-import { POPULAR_DISHES, FoodItem } from "@/data/mockData";
+import { Plus, Minus, Flame, Sparkles } from "lucide-react";
+import { POPULAR_DISHES } from "@/data/mockData";
 import { useApp } from "@/context/AppContext";
 
 export const PopularDishes: React.FC = () => {
   const { cart, addToCart, updateQuantity } = useApp();
 
   return (
-    <section className="py-14 bg-white border-b border-slate-100">
+    <section className="py-20 lg:py-24 bg-white border-b border-slate-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Section Header */}
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3 mb-8">
-          <div>
-            <div className="inline-flex items-center gap-1.5 text-xs uppercase font-extrabold tracking-wider text-[#0891b2] mb-1">
-              <Sparkles className="w-3.5 h-3.5 text-[#0bdcfc]" />
-              <span>Chef Curated Specials</span>
-            </div>
-            <h2 className="text-2xl sm:text-3xl font-black tracking-tight text-slate-900">
-              Most ordered dishes this week
-            </h2>
-            <p className="text-xs sm:text-sm text-slate-500 font-medium mt-1">
-              Handpicked customer favourites with guaranteed under 30-minute delivery
-            </p>
+        {/* Spacious Section Header */}
+        <div className="mb-12 space-y-2">
+          <div className="inline-flex items-center gap-2 text-xs uppercase font-extrabold tracking-wider text-[#0891b2]">
+            <Sparkles className="w-4 h-4 text-[#0bdcfc]" />
+            <span>Chef Curated Specials</span>
           </div>
+          <h2 className="text-3xl sm:text-4xl font-black tracking-tight text-slate-950">
+            Most ordered dishes this week
+          </h2>
+          <p className="text-sm sm:text-base text-slate-500 font-medium">
+            Handpicked customer favourites delivered fresh in under 30 minutes
+          </p>
         </div>
 
-        {/* Dishes Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Spacious Dishes Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {POPULAR_DISHES.map((dish) => {
             const cartEntry = cart.find((item) => item.food.id === dish.id);
             const qty = cartEntry ? cartEntry.quantity : 0;
@@ -38,17 +36,16 @@ export const PopularDishes: React.FC = () => {
             return (
               <div
                 key={dish.id}
-                className="bg-slate-50/70 hover:bg-white rounded-2xl p-4 border border-slate-200/80 hover:border-[#0bdcfc]/60 card-subtle transition-all flex flex-col justify-between group"
+                className="bg-slate-50/60 hover:bg-white rounded-3xl p-6 border border-slate-200/80 hover:border-[#0bdcfc]/60 shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between group"
               >
-                <div className="flex gap-4 items-start">
+                <div className="flex gap-5 items-start">
                   
-                  {/* Left Column: Info */}
-                  <div className="flex-1 space-y-1.5">
+                  {/* Left Column: Info with comfortable spacing */}
+                  <div className="flex-1 space-y-2">
                     {/* Dietary & Bestseller tag */}
                     <div className="flex items-center gap-2">
-                      {/* Veg / Non-veg SVG indicator */}
                       <span
-                        className={`w-3.5 h-3.5 rounded-xs border flex items-center justify-center ${
+                        className={`w-4 h-4 rounded-xs border flex items-center justify-center ${
                           dish.isVeg
                             ? "border-emerald-600 bg-white"
                             : "border-red-600 bg-white"
@@ -69,50 +66,50 @@ export const PopularDishes: React.FC = () => {
                       )}
 
                       {dish.isSpicy && (
-                        <span className="flex items-center gap-0.5 text-[10px] font-bold text-red-600 bg-red-50 px-1.5 py-0.5 rounded-md">
-                          <Flame className="w-2.5 h-2.5" />
+                        <span className="flex items-center gap-1 text-[10px] font-bold text-red-600 bg-red-50 px-2 py-0.5 rounded-md">
+                          <Flame className="w-3 h-3" />
                           Spicy
                         </span>
                       )}
                     </div>
 
                     {/* Dish Name */}
-                    <h3 className="font-extrabold text-slate-900 text-sm sm:text-base leading-snug group-hover:text-[#0891b2] transition-colors">
+                    <h3 className="font-extrabold text-slate-950 text-base sm:text-lg leading-snug group-hover:text-[#0891b2] transition-colors">
                       {dish.name}
                     </h3>
 
                     {/* Restaurant Origin */}
-                    <div className="text-[11px] font-semibold text-slate-400">
+                    <div className="text-xs font-semibold text-slate-400">
                       by {dish.restaurantName}
                     </div>
 
                     {/* Description */}
-                    <p className="text-xs text-slate-500 line-clamp-2 leading-relaxed">
+                    <p className="text-xs sm:text-sm text-slate-500 line-clamp-2 leading-relaxed pt-1">
                       {dish.description}
                     </p>
                   </div>
 
-                  {/* Right Column: Transparent Cutout Dish Image & Quantity Stepper */}
+                  {/* Right Column: Dish Cutout & Stepper */}
                   <div className="relative flex flex-col items-center flex-shrink-0">
-                    <div className="relative w-28 h-28 sm:w-32 sm:h-32 bg-white rounded-2xl p-2 border border-slate-100 shadow-xs flex items-center justify-center group-hover:shadow-md transition-shadow">
-                      <div className="relative w-full h-full transition-transform duration-300 group-hover:scale-105">
+                    <div className="relative w-32 h-32 bg-white rounded-2xl p-2.5 border border-slate-100 shadow-sm flex items-center justify-center group-hover:shadow-md transition-shadow">
+                      <div className="relative w-full h-full transition-transform duration-300 group-hover:scale-108">
                         <Image
                           src={dish.image}
                           alt={dish.name}
                           fill
-                          sizes="130px"
+                          sizes="140px"
                           className="object-contain"
                         />
                       </div>
                     </div>
 
-                    {/* Deliveroo / Swiggy Style Stepper Button overlapping image bottom */}
+                    {/* Stepper Button */}
                     <div className="absolute -bottom-3">
                       {qty === 0 ? (
                         <button
                           type="button"
                           onClick={() => addToCart(dish)}
-                          className="px-4 py-1.5 rounded-full bg-white hover:bg-[#0bdcfc] text-slate-900 font-extrabold text-xs shadow-md border border-slate-200 hover:border-[#0bdcfc] transition-all flex items-center gap-1 active:scale-95"
+                          className="px-5 py-2 rounded-full bg-white hover:bg-[#0bdcfc] text-slate-950 font-black text-xs shadow-md border border-slate-200 hover:border-[#0bdcfc] transition-all flex items-center gap-1 active:scale-95"
                         >
                           <Plus className="w-3.5 h-3.5 text-[#0891b2]" />
                           <span>ADD</span>
@@ -122,17 +119,17 @@ export const PopularDishes: React.FC = () => {
                           <button
                             type="button"
                             onClick={() => updateQuantity(dish.id, qty - 1)}
-                            className="px-2.5 py-1.5 hover:bg-black/10 transition-colors"
+                            className="px-3 py-1.5 hover:bg-black/10 transition-colors"
                           >
-                            <Minus className="w-3 h-3" />
+                            <Minus className="w-3.5 h-3.5" />
                           </button>
-                          <span className="px-2 font-black text-xs">{qty}</span>
+                          <span className="px-2.5 font-black text-xs">{qty}</span>
                           <button
                             type="button"
                             onClick={() => updateQuantity(dish.id, qty + 1)}
-                            className="px-2.5 py-1.5 hover:bg-black/10 transition-colors"
+                            className="px-3 py-1.5 hover:bg-black/10 transition-colors"
                           >
-                            <Plus className="w-3 h-3" />
+                            <Plus className="w-3.5 h-3.5" />
                           </button>
                         </div>
                       )}
@@ -142,9 +139,9 @@ export const PopularDishes: React.FC = () => {
                 </div>
 
                 {/* Price and Calories Bar */}
-                <div className="mt-4 pt-3 border-t border-slate-200/60 flex items-center justify-between text-xs">
+                <div className="mt-6 pt-4 border-t border-slate-200/60 flex items-center justify-between text-xs sm:text-sm">
                   <div className="flex items-baseline gap-2">
-                    <span className="text-base font-black text-slate-950">
+                    <span className="text-lg font-black text-slate-950">
                       £{dish.price.toFixed(2)}
                     </span>
                     {dish.originalPrice && (
@@ -155,7 +152,7 @@ export const PopularDishes: React.FC = () => {
                   </div>
 
                   {dish.calories && (
-                    <span className="text-[11px] font-semibold text-slate-400">
+                    <span className="text-xs font-semibold text-slate-400">
                       {dish.calories}
                     </span>
                   )}
