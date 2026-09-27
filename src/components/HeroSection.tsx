@@ -49,10 +49,10 @@ export const HeroSection: React.FC = () => {
   };
 
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-[#028eb0] via-[#03a5bd] to-[#017a99] text-white pt-6 pb-20 lg:pt-8 lg:pb-28 select-none">
+    <section className="relative overflow-hidden bg-[#00C2E8] text-white pt-6 pb-20 lg:pt-8 lg:pb-28 select-none">
       
       {/* Subtle depth ambient lighting */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_15%,rgba(255,255,255,0.12),transparent_70%)] pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_15%,rgba(255,255,255,0.10),transparent_70%)] pointer-events-none" />
 
       {/* Top Navigation Row (Integrated directly inside Hero like Swiggy) */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-30 mb-12 sm:mb-16">
