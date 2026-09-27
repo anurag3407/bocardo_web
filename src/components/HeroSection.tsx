@@ -166,14 +166,14 @@ export const HeroSection: React.FC = () => {
         />
       </div>
 
-      {/* Flanking Right Visual: Sushi feast platter (Pure food delivery) */}
-      <div className="hidden lg:block absolute right-0 top-16 xl:top-20 translate-x-8 xl:translate-x-6 w-68 xl:w-88 pointer-events-none select-none z-10 transition-transform duration-500">
+      {/* Flanking Right Visual: Elegant diagonal artisan sushi platter with chopsticks (Pure food delivery) */}
+      <div className="hidden lg:block absolute -right-6 lg:-right-4 xl:right-0 top-24 xl:top-28 translate-x-4 lg:translate-x-8 xl:translate-x-10 w-80 lg:w-[400px] xl:w-[450px] pointer-events-none select-none z-10 transition-transform duration-500">
         <Image
-          src="/hero/sushi_tray_clean.png"
-          alt="Sushi feast platter"
-          width={380}
-          height={300}
-          className="object-contain drop-shadow-[0_20px_35px_rgba(0,0,0,0.3)]"
+          src="/hero/sushi_flank_clean.png"
+          alt="Gourmet sushi platter"
+          width={520}
+          height={460}
+          className="object-contain drop-shadow-[0_24px_40px_rgba(0,0,0,0.28)]"
           priority
         />
       </div>
