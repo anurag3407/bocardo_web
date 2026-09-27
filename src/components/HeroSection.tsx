@@ -154,50 +154,26 @@ export const HeroSection: React.FC = () => {
         </div>
       </div>
 
-      {/* Flanking Top-Left Visual: Wood-fired Artisan Pizza on edge (Moved to top) */}
-      <div className="hidden lg:block absolute left-0 top-24 lg:top-28 xl:top-32 -translate-x-16 xl:-translate-x-12 w-64 lg:w-76 xl:w-84 pointer-events-none select-none z-10 transition-transform duration-500">
+      {/* Flanking Left Visual: Wood-fired Artisan Pizza on edge */}
+      <div className="hidden lg:block absolute left-0 top-28 lg:top-32 xl:top-36 -translate-x-12 lg:-translate-x-10 xl:-translate-x-6 w-68 lg:w-80 xl:w-92 pointer-events-none select-none z-10 transition-transform duration-500">
         <Image
           src="/hero/pizza_slice_flank.png"
           alt="Fresh artisan wood-fired pizza"
-          width={360}
-          height={380}
-          className="object-contain drop-shadow-[0_24px_40px_rgba(0,0,0,0.28)]"
+          width={380}
+          height={400}
+          className="object-contain drop-shadow-[0_24px_45px_rgba(0,0,0,0.28)]"
           priority
         />
       </div>
 
-      {/* Flanking Bottom-Left Visual: Gourmet Smash Burger */}
-      <div className="hidden lg:block absolute left-0 bottom-4 lg:bottom-8 xl:bottom-10 -translate-x-8 xl:-translate-x-6 w-40 lg:w-48 xl:w-56 pointer-events-none select-none z-10 transition-transform duration-500">
-        <Image
-          src="/hero/burger_flank.png"
-          alt="Gourmet double smash cheeseburger"
-          width={320}
-          height={300}
-          className="object-contain drop-shadow-[0_20px_35px_rgba(0,0,0,0.25)]"
-          priority
-        />
-      </div>
-
-      {/* Flanking Top-Right Visual: Authentic Indian Royal Feast (Biryani handi, naan, butter chicken, raita) */}
-      <div className="hidden lg:block absolute -right-4 lg:right-0 top-22 lg:top-26 xl:top-28 translate-x-8 lg:translate-x-12 xl:translate-x-16 w-80 lg:w-[420px] xl:w-[480px] pointer-events-none select-none z-10 transition-transform duration-500">
-        <Image
-          src="/hero/indian_feast_flank.png"
-          alt="Authentic Royal Indian Feast with Hyderabadi Dum Biryani and Garlic Naan"
-          width={540}
-          height={420}
-          className="object-contain drop-shadow-[0_28px_45px_rgba(0,0,0,0.30)]"
-          priority
-        />
-      </div>
-
-      {/* Flanking Bottom-Right Visual: Steaming Asian Ramen Bowl with Chopsticks */}
-      <div className="hidden lg:block absolute right-0 bottom-4 lg:bottom-8 xl:bottom-10 translate-x-6 xl:translate-x-8 w-40 lg:w-48 xl:w-56 pointer-events-none select-none z-10 transition-transform duration-500">
+      {/* Flanking Right Visual: Steaming Asian Ramen Noodle Bowl with Chopsticks (Moved to top) */}
+      <div className="hidden lg:block absolute right-0 top-24 lg:top-28 xl:top-32 translate-x-6 lg:translate-x-10 xl:translate-x-14 w-64 lg:w-76 xl:w-88 pointer-events-none select-none z-10 transition-transform duration-500">
         <Image
           src="/hero/ramen_bowl_flank.png"
-          alt="Artisanal ramen noodle bowl with prawns and soft-boiled eggs"
-          width={300}
-          height={300}
-          className="object-contain drop-shadow-[0_20px_35px_rgba(0,0,0,0.25)]"
+          alt="Artisanal ramen noodle bowl with prawns, eggs and chopsticks"
+          width={360}
+          height={360}
+          className="object-contain drop-shadow-[0_24px_45px_rgba(0,0,0,0.28)]"
           priority
         />
       </div>
