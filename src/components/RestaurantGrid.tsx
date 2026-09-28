@@ -108,7 +108,7 @@ export const RestaurantGrid: React.FC = () => {
             <div className="relative">
               <select
                 value={sortBy}
-                onChange={(e) => setSortBy(e.target.value as any)}
+                onChange={(e) => setSortBy(e.target.value as "recommended" | "rating" | "fastest" | "distance")}
                 aria-label="Sort restaurants by"
                 className="appearance-none bg-white text-xs sm:text-sm font-bold text-slate-900 border border-slate-200 rounded-2xl pl-4 pr-10 py-2.5 shadow-2xs hover:border-[#0bdcfc] outline-none cursor-pointer"
               >

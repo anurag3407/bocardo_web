@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { X, Lock, Mail, User as UserIcon, Phone, CheckCircle2 } from "lucide-react";
+import { X, Mail, User as UserIcon, Phone } from "lucide-react";
 import { useApp } from "@/context/AppContext";
 import BocardoLogo from "./BocardoLogo";
 

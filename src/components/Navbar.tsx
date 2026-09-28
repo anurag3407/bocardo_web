@@ -11,7 +11,6 @@ import {
   Menu,
   X,
   Bike,
-  Sparkles,
 } from "lucide-react";
 import { useApp } from "@/context/AppContext";
 import BocardoLogo from "./BocardoLogo";
@@ -31,8 +30,6 @@ export const Navbar: React.FC = () => {
     setIsTrackingModalOpen,
     searchQuery,
     setSearchQuery,
-    setIsPartnerModalOpen,
-    setPartnerModalType,
   } = useApp();
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);

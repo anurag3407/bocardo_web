@@ -1,6 +1,6 @@
 "use client";
 
-import React, { createContext, useContext, useState, useEffect } from "react";
+import React, { createContext, useContext, useState } from "react";
 import { FoodItem, Restaurant } from "@/data/mockData";
 
 export interface CartItem {
@@ -9,7 +9,7 @@ export interface CartItem {
   instructions?: string;
 }
 
-interface Address {
+export interface Address {
   id: string;
   label: string;
   address: string;
@@ -101,10 +101,27 @@ const defaultAddresses: Address[] = [
 
 const AppContext = createContext<AppContextType | undefined>(undefined);
 
+const defaultCartItem: CartItem = {
+  food: {
+    id: "pop-1",
+    name: "Double Truffle Smash Burger",
+    description: "Two 3oz aged beef patties, black truffle glaze, Monterey Jack, caramelised shallots.",
+    price: 11.5,
+    originalPrice: 13.5,
+    image: "/food/burger.png",
+    isVeg: false,
+    isBestseller: true,
+    calories: "780 kcal",
+    restaurantId: "burger-craft",
+    restaurantName: "The Burger Craft Co.",
+  },
+  quantity: 1,
+};
+
 export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const [cart, setCart] = useState<CartItem[]>([]);
+  const [cart, setCart] = useState<CartItem[]>([defaultCartItem]);
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [tipAmount, setTipAmount] = useState(1.5);
   const [promoCode, setPromoCode] = useState("");
@@ -125,25 +142,6 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [toast, setToast] = useState<string | null>(null);
-
-  // Initialize with a pre-filled sample item for immediate delight
-  useEffect(() => {
-    // Add default item so users immediately see a populated cart if they open it
-    const defaultItem: FoodItem = {
-      id: "pop-1",
-      name: "Double Truffle Smash Burger",
-      description: "Two 3oz aged beef patties, black truffle glaze, Monterey Jack, caramelised shallots.",
-      price: 11.5,
-      originalPrice: 13.5,
-      image: "/food/burger.png",
-      isVeg: false,
-      isBestseller: true,
-      calories: "780 kcal",
-      restaurantId: "burger-craft",
-      restaurantName: "The Burger Craft Co.",
-    };
-    setCart([{ food: defaultItem, quantity: 1 }]);
-  }, []);
 
   const showToast = (msg: string) => {
     setToast(msg);

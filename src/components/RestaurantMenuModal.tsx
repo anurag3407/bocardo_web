@@ -7,12 +7,9 @@ import {
   Star,
   Clock,
   MapPin,
-  ShieldCheck,
   Plus,
   Minus,
-  Check,
   Flame,
-  Percent,
 } from "lucide-react";
 import { useApp } from "@/context/AppContext";
 import { FoodItem } from "@/data/mockData";

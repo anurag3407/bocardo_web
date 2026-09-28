@@ -4,12 +4,9 @@ import React, { useState, useEffect } from "react";
 import {
   X,
   Bike,
-  CheckCircle2,
-  Clock,
   MapPin,
   Phone,
   MessageSquare,
-  ShieldCheck,
   Compass,
   ArrowRight,
 } from "lucide-react";
@@ -21,8 +18,6 @@ export const LiveTrackingModal: React.FC = () => {
     isTrackingModalOpen,
     setIsTrackingModalOpen,
     selectedAddress,
-    cart,
-    subtotal,
   } = useApp();
 
   const [currentStep, setCurrentStep] = useState<number>(2); // 0: Placed, 1: Kitchen, 2: Rider on road, 3: Arriving

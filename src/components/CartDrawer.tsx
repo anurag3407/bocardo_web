@@ -23,7 +23,6 @@ export const CartDrawer: React.FC = () => {
     isCartOpen,
     setIsCartOpen,
     updateQuantity,
-    removeFromCart,
     clearCart,
     subtotal,
     deliveryFee,

@@ -1,8 +1,8 @@
 "use client";
 
 import React, { useState } from "react";
-import { X, MapPin, Home, Briefcase, Plus, Check } from "lucide-react";
-import { useApp } from "@/context/AppContext";
+import { X, MapPin, Home, Briefcase, Check } from "lucide-react";
+import { useApp, Address } from "@/context/AppContext";
 
 export const AddressModal: React.FC = () => {
   const {
@@ -18,7 +18,7 @@ export const AddressModal: React.FC = () => {
 
   if (!isAddressModalOpen) return null;
 
-  const handleSelect = (addr: any) => {
+  const handleSelect = (addr: Address) => {
     setSelectedAddress(addr);
     setIsAddressModalOpen(false);
     showToast(`Delivery location updated to ${addr.label}`);
