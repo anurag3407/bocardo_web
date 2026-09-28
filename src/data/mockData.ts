@@ -52,7 +52,7 @@ export const CATEGORIES: FoodCategory[] = [
     name: "Burgers",
     slug: "burgers",
     itemCount: 42,
-    image: "/categories/burger.png",
+    image: "/hero/burger_flank.png",
     highlightText: "Smash & Classic",
   },
   {
@@ -60,7 +60,7 @@ export const CATEGORIES: FoodCategory[] = [
     name: "Artisan Pizza",
     slug: "pizza",
     itemCount: 38,
-    image: "/categories/pizza.png",
+    image: "/categories/pizza_clean.png",
     highlightText: "Wood-fired sourdough",
   },
   {
@@ -68,7 +68,7 @@ export const CATEGORIES: FoodCategory[] = [
     name: "Sushi & Poke",
     slug: "sushi",
     itemCount: 29,
-    image: "/categories/sushi.png",
+    image: "/hero/sushi_flank_clean.png",
     highlightText: "Fresh daily catch",
   },
   {
@@ -76,7 +76,7 @@ export const CATEGORIES: FoodCategory[] = [
     name: "Biryani & Curries",
     slug: "biryani",
     itemCount: 34,
-    image: "/categories/biryani.png",
+    image: "/hero/indian_feast_flank.png",
     highlightText: "Rich royal dum",
   },
   {
@@ -84,7 +84,7 @@ export const CATEGORIES: FoodCategory[] = [
     name: "Fresh Pasta",
     slug: "pasta",
     itemCount: 22,
-    image: "/categories/pasta.png",
+    image: "/categories/pasta_clean.png",
     highlightText: "Handmade noodles",
   },
   {
@@ -92,7 +92,7 @@ export const CATEGORIES: FoodCategory[] = [
     name: "Tacos & Mexican",
     slug: "tacos",
     itemCount: 19,
-    image: "/categories/tacos.png",
+    image: "/categories/tacos_clean.png",
     highlightText: "Street-style flavour",
   },
   {
@@ -108,7 +108,7 @@ export const CATEGORIES: FoodCategory[] = [
     name: "Asian Wok",
     slug: "noodles",
     itemCount: 31,
-    image: "/categories/noodles.png",
+    image: "/hero/ramen_bowl_flank.png",
     highlightText: "Stir-fry & Ramen",
   },
   {
@@ -116,7 +116,7 @@ export const CATEGORIES: FoodCategory[] = [
     name: "Desserts & Bakes",
     slug: "dessert",
     itemCount: 27,
-    image: "/categories/dessert.png",
+    image: "/categories/dessert_sq.png",
     highlightText: "Warm cookies & treats",
   },
   {
