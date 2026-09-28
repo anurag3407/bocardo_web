@@ -4,13 +4,14 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "opennextjs-cloudflare build",
+    "build:next": "next build",
+    "build:worker": "opennextjs-cloudflare build",
     "start": "next start",
     "lint": "eslint",
-    "build:worker": "opennextjs-cloudflare build",
     "dev:worker": "wrangler dev --port 8771",
-    "preview:worker": "npm run build:worker && npm run dev:worker",
-    "deploy": "npm run build:worker && wrangler deploy",
+    "preview:worker": "npm run build && npm run dev:worker",
+    "deploy": "npm run build && wrangler deploy",
     "cf-typegen": "wrangler types"
   },
   "dependencies": {
