@@ -2,16 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
-import {
-  Sparkles,
-  MapPin,
-  Search,
-  ShoppingBag,
-  Bell,
-  Star,
-  Clock,
-  Compass,
-} from "lucide-react";
+import { Sparkles } from "lucide-react";
 
 export const AppLaunchBanner: React.FC = () => {
   return (
@@ -95,178 +86,104 @@ export const AppLaunchBanner: React.FC = () => {
 
           </div>
 
-          {/* Right Column: Realistic Modern iPhone 16 Pro Mockup with App Coming Soon Screen */}
-          <div className="lg:col-span-6 flex justify-center lg:justify-end">
-            <div className="relative w-full max-w-[320px] sm:max-w-[340px]">
-              
-              {/* Outer Titanium Chassis Frame */}
-              <div className="relative rounded-[54px] p-2.5 sm:p-3 bg-gradient-to-b from-neutral-800 via-neutral-900 to-neutral-950 ring-1 ring-white/20 shadow-[0_25px_80px_rgba(0,0,0,0.9),0_0_50px_rgba(0,194,232,0.12)]">
-                
-                {/* Physical Hardware Buttons */}
-                {/* Action button */}
-                <div className="absolute -left-[3px] top-24 w-[3px] h-7 bg-neutral-700 rounded-l-xs" />
-                {/* Volume up */}
-                <div className="absolute -left-[3px] top-36 w-[3px] h-11 bg-neutral-700 rounded-l-xs" />
-                {/* Volume down */}
-                <div className="absolute -left-[3px] top-52 w-[3px] h-11 bg-neutral-700 rounded-l-xs" />
-                {/* Power button */}
-                <div className="absolute -right-[3px] top-36 w-[3px] h-14 bg-neutral-700 rounded-r-xs" />
-
-                {/* Inner Screen Container */}
-                <div className="relative bg-[#0d1117] rounded-[44px] overflow-hidden border border-neutral-800 text-white flex flex-col h-[580px] shadow-inner">
-                  
-                  {/* Subtle Glass Sheen Reflection */}
-                  <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.04] to-transparent pointer-events-none z-30" />
-
-                  {/* Dynamic Island with Camera & Sensor */}
-                  <div className="absolute top-3 left-1/2 -translate-x-1/2 w-26 h-6 bg-black rounded-full z-40 flex items-center justify-between px-2.5 ring-1 ring-white/10 shadow-md">
-                    <div className="w-2.5 h-2.5 rounded-full bg-[#121620] border border-neutral-800 flex items-center justify-center">
-                      <div className="w-1 h-1 rounded-full bg-[#1e293b]" />
+          {/* Right Column: Authentic iPhone Lock Screen Mockup */}
+          <div className="lg:col-span-6 flex justify-center items-center py-6 sm:py-8">
+            <div className="iphone-wrapper">
+              <div className="outside-border">
+                <div className="silencer" />
+                <div className="volume-up" />
+                <div className="volume-down" />
+                <div className="button-on" />
+                <div className="inside-border">
+                  {/* Camera */}
+                  <div className="camera">
+                    <div className="camera-dot">
+                      <div className="camera-dot-2" />
+                      <div className="camera-dot-3" />
                     </div>
-                    <div className="w-2 h-2 rounded-full bg-[#0bdcfc]/20" />
+                    <div className="camera-speaker" />
                   </div>
 
-                  {/* iOS Status Bar */}
-                  <div className="pt-3.5 px-6 pb-2 flex justify-between items-center text-[11px] text-white/90 font-semibold select-none z-30">
-                    <span>9:41</span>
-                    <div className="flex items-center gap-1.5">
-                      {/* Cellular Bars */}
-                      <div className="flex items-end gap-0.5 h-2.5">
-                        <span className="w-0.5 h-1 bg-white rounded-2xs" />
-                        <span className="w-0.5 h-1.5 bg-white rounded-2xs" />
-                        <span className="w-0.5 h-2 bg-white rounded-2xs" />
-                        <span className="w-0.5 h-2.5 bg-white rounded-2xs" />
-                      </div>
-                      <span className="text-[10px] font-bold">5G</span>
-                      {/* Battery */}
-                      <div className="w-4.5 h-2.5 border border-white/80 rounded-xs p-0.5 flex items-center">
-                        <div className="w-2.5 h-full bg-[#00C2E8] rounded-3xs" />
-                      </div>
+                  {/* Lock */}
+                  <div className="lock">
+                    <div className="lock-locked" />
+                  </div>
+
+                  {/* Time */}
+                  <div className="time">19:53</div>
+
+                  {/* Battery and Signal */}
+                  <div className="t-r-info">
+                    <div className="dots">...</div>
+                    <div className="battery">
+                      <div className="bar" />
+                      <div className="dot" />
                     </div>
                   </div>
 
-                  {/* In-App Header */}
-                  <div className="pt-2 px-4 pb-3 flex items-center justify-between border-b border-neutral-800/80 bg-neutral-900/60 backdrop-blur-md">
-                    <div className="flex items-center gap-2">
-                      <div className="w-7 h-7 rounded-full bg-white flex items-center justify-center p-0.5 shadow-xs">
-                        <Image
-                          src="/logo-circle.png"
-                          alt="Bocardo"
-                          width={24}
-                          height={24}
-                          className="object-contain"
-                        />
-                      </div>
-                      <div>
-                        <div className="text-[8px] uppercase font-bold text-neutral-400 tracking-wider">
-                          Deliver to
-                        </div>
-                        <div className="text-[11px] font-bold text-white flex items-center gap-1">
-                          <span>Marylebone W1U</span>
-                          <span className="text-[#00C2E8] text-[9px]">▾</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="w-7 h-7 rounded-full bg-neutral-800 border border-neutral-700 flex items-center justify-center text-white">
-                      <ShoppingBag className="w-3.5 h-3.5" />
-                    </div>
-                  </div>
+                  {/* Date */}
+                  <div className="date">Tuesday, 9 August</div>
 
-                  {/* App Screen Content: Coming Soon Experience */}
-                  <div className="p-3.5 space-y-3 flex-1 overflow-hidden flex flex-col justify-between">
-                    
-                    {/* Hero App Launching Soon Card */}
-                    <div className="relative rounded-2xl p-4 bg-gradient-to-br from-[#00C2E8] to-[#0077b6] text-white shadow-lg overflow-hidden">
-                      <div className="absolute -right-4 -bottom-4 w-24 h-24 bg-white/10 rounded-full blur-xl pointer-events-none" />
-                      
-                      <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-black/25 backdrop-blur-xs text-[10px] font-black uppercase tracking-wider text-white mb-2">
-                        <Sparkles className="w-3 h-3 text-[#facc15]" />
-                        <span>APP COMING SOON</span>
-                      </div>
-                      
-                      <div className="text-base font-black tracking-tight leading-tight mb-1">
-                        Bocardo iOS & Android
-                      </div>
-                      <div className="text-[11px] text-white/90 leading-snug">
-                        20-min food delivery, live GPS tracking & exclusive member perks.
-                      </div>
-
-                      <div className="mt-3 flex items-center gap-2">
-                        <div className="px-3 py-1.5 rounded-xl bg-white text-slate-950 font-black text-[10px] shadow-sm flex items-center gap-1">
-                          <Bell className="w-3 h-3 text-[#00C2E8]" />
-                          <span>Pre-register</span>
-                        </div>
-                        <span className="text-[10px] text-white/80 font-bold">50% off on launch</span>
-                      </div>
-                    </div>
-
-                    {/* Featured Dish / Restaurant Preview */}
-                    <div className="bg-neutral-900 border border-neutral-800 rounded-2xl p-3 space-y-2">
-                      <div className="flex items-center justify-between">
-                        <span className="text-[11px] font-bold text-white">Top Restaurants Ready</span>
-                        <span className="text-[10px] text-[#00C2E8] font-bold">Explore</span>
-                      </div>
-
-                      <div className="flex items-center gap-3">
-                        <div className="relative w-14 h-14 rounded-xl overflow-hidden flex-shrink-0 bg-neutral-800">
+                  {/* Bocardo App Coming Soon Live Activity / Notification Widget */}
+                  <div className="absolute top-[125px] left-3 right-3 bg-neutral-950/85 backdrop-blur-xl border border-white/15 rounded-2xl p-3 shadow-2xl z-20 text-white">
+                    <div className="flex items-center justify-between mb-2">
+                      <div className="flex items-center gap-1.5">
+                        <div className="w-5 h-5 rounded-full bg-white flex items-center justify-center p-0.5 shadow-sm">
                           <Image
-                            src="/restaurants/pizza-palace.jpg"
-                            alt="Pizza Palace"
-                            fill
-                            sizes="60px"
-                            className="object-cover"
+                            src="/logo-circle.png"
+                            alt="Bocardo"
+                            width={16}
+                            height={16}
+                            className="object-contain"
                           />
                         </div>
-                        <div className="flex-1 min-w-0">
-                          <div className="text-xs font-bold text-white truncate">Pizza Palace London</div>
-                          <div className="text-[10px] text-neutral-400">Artisan Wood-Fired • Italian</div>
-                          <div className="flex items-center gap-2 text-[10px] text-neutral-400 mt-1">
-                            <span className="text-[#facc15] font-bold flex items-center gap-0.5">
-                              <Star className="w-2.5 h-2.5 fill-[#facc15]" /> 4.9
-                            </span>
-                            <span>•</span>
-                            <span className="flex items-center gap-0.5">
-                              <Clock className="w-2.5 h-2.5" /> 15-25 min
-                            </span>
-                          </div>
-                        </div>
+                        <span className="text-[9px] font-black tracking-wider text-neutral-200 uppercase">
+                          BOCARDO
+                        </span>
                       </div>
-                    </div>
-
-                    {/* Live Tracking Mini Preview */}
-                    <div className="bg-neutral-900 border border-neutral-800 rounded-2xl p-2.5 flex items-center justify-between">
-                      <div className="flex items-center gap-2.5">
-                        <div className="w-7 h-7 rounded-xl bg-[#00C2E8]/15 text-[#00C2E8] flex items-center justify-center">
-                          <Compass className="w-4 h-4" />
-                        </div>
-                        <div>
-                          <div className="text-[10px] font-bold text-white">Live RouteEngine™ GPS</div>
-                          <div className="text-[9px] text-neutral-400">Millimeter-precise road map</div>
-                        </div>
-                      </div>
-                      <span className="text-[9px] font-black uppercase text-emerald-400 bg-emerald-400/10 px-2 py-0.5 rounded-md">
-                        Ready
+                      <span className="text-[8px] font-semibold text-[#00C2E8] bg-[#00C2E8]/10 px-1.5 py-0.5 rounded-full border border-[#00C2E8]/20">
+                        COMING SOON
                       </span>
                     </div>
 
+                    <div className="text-xs font-black text-white leading-tight mb-1">
+                      The App Is Arriving
+                    </div>
+                    <p className="text-[8.5px] text-neutral-300 leading-tight mb-2.5">
+                      20-min food delivery, live GPS tracking & exclusive launch treats.
+                    </p>
+
+                    <div className="flex items-center justify-between pt-2 border-t border-white/10 text-[8.5px]">
+                      <span className="text-[#00C2E8] font-bold flex items-center gap-1">
+                        <Sparkles className="w-2.5 h-2.5" /> 50% Off Launch
+                      </span>
+                      <span className="text-neutral-400 font-medium">iOS & Android</span>
+                    </div>
                   </div>
 
-                  {/* iOS App Bottom Navigation Tab Bar */}
-                  <div className="bg-neutral-900/90 border-t border-neutral-800/80 py-2.5 px-6 flex justify-between items-center text-[9px] text-neutral-400 backdrop-blur-md">
-                    <span className="text-[#00C2E8] font-bold">Discover</span>
-                    <span>Search</span>
-                    <span>Orders</span>
-                    <span>Account</span>
+                  {/* Torch */}
+                  <div className="torch-outter">
+                    <div className="light" />
+                    <div className="top" />
+                    <div className="switch-top" />
+                    <div className="switch-section" />
+                    <div className="switch">
+                      <div className="dot" />
+                    </div>
                   </div>
 
-                  {/* iOS Home Indicator Bar */}
-                  <div className="pb-2 pt-1 flex justify-center bg-neutral-900">
-                    <div className="w-28 h-1 bg-white/40 rounded-full" />
+                  {/* Camera */}
+                  <div className="camera-outter">
+                    <div className="box" />
+                    <div className="eye" />
+                    <div className="circle" />
+                    <div className="dot" />
                   </div>
 
+                  {/* Bottom Line */}
+                  <div className="bottom-line" />
                 </div>
               </div>
-
             </div>
           </div>
 
