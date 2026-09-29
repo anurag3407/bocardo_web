@@ -1,5 +1,5 @@
 import React from "react";
-import { FAQS, RESTAURANTS, POPULAR_DISHES } from "@/data/mockData";
+import { FAQS, RESTAURANTS } from "@/data/mockData";
 
 export default function StructuredData() {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://bocardo.in";
@@ -14,10 +14,10 @@ export default function StructuredData() {
     "alternateName": [
       "Bocardo Food Delivery",
       "Bocardo India",
-      "Bocardo Groceries & Bakeries",
+      "Bocardo Food Delivery & Bakeries",
     ],
     "description":
-      "Online food, bakery and grocery delivery platform in India with live GPS RouteEngine™ tracking.",
+      "Online food and bakery delivery platform in India with live GPS RouteEngine™ tracking.",
     "publisher": {
       "@id": `${baseUrl}/#organization`,
     },
@@ -49,7 +49,7 @@ export default function StructuredData() {
     },
     "image": `${baseUrl}/og-image.png`,
     "description":
-      "Bocardo delivers fresh food, artisan baked goods, and daily grocery essentials from top local kitchens and stores in minutes.",
+      "Bocardo delivers fresh food, artisan baked goods, and chef-crafted meals from top local kitchens and restaurants in minutes.",
     "foundingLocation": {
       "@type": "Place",
       "name": "Bengaluru, Karnataka, India",
@@ -88,8 +88,8 @@ export default function StructuredData() {
     "@context": "https://schema.org",
     "@type": "DeliveryService",
     "@id": `${baseUrl}/#service`,
-    "name": "Bocardo Express Food & Grocery Delivery",
-    "serviceType": "On-demand Food and Grocery Delivery",
+    "name": "Bocardo Express Food Delivery",
+    "serviceType": "On-demand Food Delivery",
     "provider": {
       "@id": `${baseUrl}/#organization`,
     },
@@ -150,13 +150,13 @@ export default function StructuredData() {
     })),
   };
 
-  // 5. ItemList Schema for Top Restaurants (Rich star rating and card snippets)
+  // 5. ItemList Schema for All Restaurants (Rich star rating and card snippets)
   const restaurantListSchema = {
     "@context": "https://schema.org",
     "@type": "ItemList",
-    "name": "Top Rated Restaurants on Bocardo",
+    "name": "All Restaurants on Bocardo",
     "description":
-      "Explore curated top-tier restaurants and artisan kitchens delivering in your city.",
+      "Explore curated restaurants and artisan kitchens delivering in your city.",
     "itemListElement": RESTAURANTS.map((restaurant, idx) => ({
       "@type": "ListItem",
       "position": idx + 1,
@@ -183,37 +183,11 @@ export default function StructuredData() {
     })),
   };
 
-  // 6. ItemList Schema for Popular Dishes
-  const dishListSchema = {
-    "@context": "https://schema.org",
-    "@type": "ItemList",
-    "name": "Most Ordered Food Dishes on Bocardo",
-    "itemListElement": POPULAR_DISHES.map((dish, idx) => ({
-      "@type": "ListItem",
-      "position": idx + 1,
-      "item": {
-        "@type": "MenuItem",
-        "name": dish.name,
-        "description": dish.description,
-        "image": `${baseUrl}${dish.image}`,
-        "offers": {
-          "@type": "Offer",
-          "price": dish.price.toString(),
-          "priceCurrency": "INR",
-          "availability": "https://schema.org/InStock",
-        },
-        "suitableForDiet": dish.isVeg
-          ? "https://schema.org/VegetarianDiet"
-          : undefined,
-      },
-    })),
-  };
-
-  // 7. SoftwareApplication Schema for Bocardo Mobile Apps
+  // 6. SoftwareApplication Schema for Bocardo Mobile Apps
   const appSchema = {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
-    "name": "Bocardo: Food Delivery & Groceries",
+    "name": "Bocardo: Food Delivery & Restaurants",
     "operatingSystem": "iOS, Android",
     "applicationCategory": "FoodAndDrinkApplication",
     "offers": {
@@ -228,7 +202,7 @@ export default function StructuredData() {
     },
   };
 
-  // 8. BreadcrumbList Schema
+  // 7. BreadcrumbList Schema
   const breadcrumbSchema = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -248,7 +222,7 @@ export default function StructuredData() {
       {
         "@type": "ListItem",
         "position": 3,
-        "name": "Top Restaurants",
+        "name": "All Restaurants",
         "item": `${baseUrl}/#restaurants-section`,
       },
     ],
@@ -275,10 +249,6 @@ export default function StructuredData() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(restaurantListSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(dishListSchema) }}
       />
       <script
         type="application/ld+json"

@@ -29,11 +29,11 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
   title: {
-    default: "Bocardo | Order Food Online, Bakery & Grocery Delivery in India",
+    default: "Bocardo | Order Food Online & Restaurant Delivery in India",
     template: "%s | Bocardo Food Delivery",
   },
   description:
-    "Order food online from the best restaurants, artisan bakeries & supermarkets near you. Lightning-fast 20-30 min delivery across Bengaluru, Mumbai, Delhi NCR, Hyderabad & more. Real-time GPS tracking & ₹0 delivery fee on Bocardo Pass.",
+    "Order food online from the best restaurants and artisan bakeries near you. Lightning-fast 20-30 min delivery across Bengaluru, Mumbai, Delhi NCR, Hyderabad & more. Real-time GPS tracking & ₹0 delivery fee on Bocardo Pass.",
   applicationName: "Bocardo",
   authors: [
     {
@@ -52,7 +52,7 @@ export const metadata: Metadata = {
     "gourmet burger delivery",
     "sushi delivery online",
     "bakery delivery",
-    "grocery delivery in minutes",
+    "fast food delivery in minutes",
     "late night food delivery",
     "Bocardo",
     "Bocardo app",
@@ -88,22 +88,22 @@ export const metadata: Metadata = {
     alternateLocale: ["en_US"],
     url: baseUrl,
     siteName: "Bocardo",
-    title: "Bocardo | Order Food Online, Bakery & Grocery Delivery in India",
+    title: "Bocardo | Order Food Online & Restaurant Delivery in India",
     description:
-      "Discover the best local restaurants, artisan bakeries and grocery essentials delivered piping hot in under 30 minutes with live GPS route tracking.",
+      "Discover the best local restaurants and artisan bakeries delivered piping hot in under 30 minutes with live GPS route tracking.",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Bocardo - Lightning-Fast Food, Bakery & Grocery Delivery in India",
+        alt: "Bocardo - Lightning-Fast Food Delivery in India",
         type: "image/png",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Bocardo | Order Food Online, Bakery & Grocery Delivery in India",
+    title: "Bocardo | Order Food Online & Restaurant Delivery in India",
     description:
       "Piping hot biryanis, wood-fired pizzas, gourmet burgers & daily bakery treats delivered in minutes. Live route tracking with RouteEngine™.",
     site: "@bocardo_in",

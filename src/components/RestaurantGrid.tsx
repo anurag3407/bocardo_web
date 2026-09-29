@@ -83,47 +83,47 @@ export const RestaurantGrid: React.FC = () => {
   }, [searchQuery, selectedCategory, activeFilter, sortBy]);
 
   return (
-    <section id="restaurants-section" className="py-20 lg:py-24 bg-slate-50/50 border-b border-slate-100">
+    <section id="restaurants-section" className="py-10 sm:py-14 lg:py-20 bg-slate-50/50 border-b border-slate-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Spacious Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
-          <div className="space-y-2">
+        {/* Section Header */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 sm:gap-6 mb-8 sm:mb-10">
+          <div className="space-y-1.5">
             <div className="text-xs uppercase font-extrabold tracking-wider text-[#0891b2]">
               Top Food Delivery
             </div>
-            <h2 className="text-3xl sm:text-4xl font-black tracking-tight text-slate-950">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black tracking-tight text-slate-950">
               {selectedCategory
                 ? `Restaurants serving ${selectedCategory.charAt(0).toUpperCase() + selectedCategory.slice(1)}`
-                : "Top rated restaurants near you"}
+                : "All Restaurants"}
             </h2>
-            <p className="text-sm sm:text-base text-slate-500 font-medium">
+            <p className="text-xs sm:text-base text-slate-500 font-medium">
               Delivering piping hot from the finest local kitchens to your doorstep
             </p>
           </div>
 
           {/* Sort Selector */}
-          <div className="flex items-center gap-3 self-start md:self-auto">
-            <span className="text-xs sm:text-sm text-slate-500 font-semibold">Sort by:</span>
+          <div className="flex items-center gap-2 sm:gap-3 self-start md:self-auto">
+            <span className="text-xs text-slate-500 font-semibold whitespace-nowrap">Sort by:</span>
             <div className="relative">
               <select
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value as "recommended" | "rating" | "fastest" | "distance")}
                 aria-label="Sort restaurants by"
-                className="appearance-none bg-white text-xs sm:text-sm font-bold text-slate-900 border border-slate-200 rounded-2xl pl-4 pr-10 py-2.5 shadow-2xs hover:border-[#0bdcfc] outline-none cursor-pointer"
+                className="appearance-none bg-white text-xs sm:text-sm font-bold text-slate-900 border border-slate-200 rounded-2xl pl-3.5 pr-8 sm:pl-4 sm:pr-10 py-2 sm:py-2.5 shadow-2xs hover:border-[#0bdcfc] outline-none cursor-pointer"
               >
                 <option value="recommended">Recommended</option>
                 <option value="rating">Highest Rated (★ 4.8+)</option>
                 <option value="fastest">Fastest Delivery</option>
                 <option value="distance">Nearest First</option>
               </select>
-              <ChevronDown className="w-4 h-4 text-slate-400 absolute right-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+              <ChevronDown className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-slate-400 absolute right-2.5 sm:right-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
             </div>
           </div>
         </div>
 
-        {/* Spacious Filter Pills (Swiggy / Zomato style) */}
-        <div className="flex items-center gap-3 overflow-x-auto no-scrollbar pb-6 pt-1">
+        {/* Filter Pills (Swiggy / Zomato style) */}
+        <div className="flex items-center gap-2 sm:gap-3 overflow-x-auto no-scrollbar pb-4 pt-1 touch-pan-x">
           {[
             { id: "all", label: "All Restaurants" },
             { id: "pass", label: "⚡ Bocardo Pass (₹0 Del)" },
@@ -138,7 +138,7 @@ export const RestaurantGrid: React.FC = () => {
                 key={pill.id}
                 type="button"
                 onClick={() => setActiveFilter(pill.id)}
-                className={`flex-shrink-0 px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold transition-all border ${
+                className={`flex-shrink-0 px-3.5 py-1.5 sm:px-5 sm:py-2.5 rounded-full text-xs sm:text-sm font-bold transition-all border ${
                   isActive
                     ? "bg-slate-950 text-white border-slate-950 shadow-md"
                     : "bg-white text-slate-700 border-slate-200 hover:border-[#0bdcfc] hover:bg-slate-50 shadow-2xs"
@@ -152,12 +152,12 @@ export const RestaurantGrid: React.FC = () => {
 
         {/* Empty State */}
         {filteredRestaurants.length === 0 ? (
-          <div className="bg-white rounded-3xl p-16 text-center border border-slate-200 max-w-lg mx-auto my-12 space-y-4 shadow-sm">
-            <div className="w-16 h-16 rounded-full bg-slate-100 flex items-center justify-center mx-auto text-slate-400">
-              <Search className="w-8 h-8" />
+          <div className="bg-white rounded-3xl p-10 sm:p-16 text-center border border-slate-200 max-w-lg mx-auto my-8 sm:my-12 space-y-4 shadow-sm">
+            <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-slate-100 flex items-center justify-center mx-auto text-slate-400">
+              <Search className="w-7 h-7 sm:w-8 sm:h-8" />
             </div>
-            <h3 className="text-lg font-bold text-slate-900">No restaurants found</h3>
-            <p className="text-sm text-slate-500">
+            <h3 className="text-base sm:text-lg font-bold text-slate-900">No restaurants found</h3>
+            <p className="text-xs sm:text-sm text-slate-500">
               We couldn&apos;t find any kitchens matching your current filters. Try resetting the filters or searching another dish.
             </p>
             <button
@@ -166,24 +166,24 @@ export const RestaurantGrid: React.FC = () => {
                 setActiveFilter("all");
                 setSelectedCategory(null);
               }}
-              className="px-6 py-2.5 text-xs sm:text-sm font-bold bg-[#0bdcfc] text-slate-950 rounded-xl"
+              className="px-5 py-2.5 text-xs sm:text-sm font-bold bg-[#0bdcfc] text-slate-950 rounded-xl"
             >
               Reset All Filters
             </button>
           </div>
         ) : (
-          /* Spacious 3-Column Grid (Zomato & Swiggy aesthetic) */
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10">
+          /* Responsive Restaurant Grid (1 Col Mobile, 2 Col Tablet, 3 Col Desktop) */
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-8 lg:gap-10">
             {filteredRestaurants.map((restaurant) => {
               const isFav = !!favorites[restaurant.id];
               return (
                 <article
                   key={restaurant.id}
                   onClick={() => setActiveRestaurant(restaurant)}
-                  className="group bg-white rounded-3xl overflow-hidden border border-slate-200/80 hover:border-[#0bdcfc]/60 shadow-xs hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer flex flex-col justify-between"
+                  className="group bg-white rounded-2xl sm:rounded-3xl overflow-hidden border border-slate-200/80 hover:border-[#0bdcfc]/60 shadow-xs hover:shadow-xl transition-all duration-300 hover:-translate-y-1 active:scale-[0.99] cursor-pointer flex flex-col justify-between"
                 >
-                  {/* Image Container with generous height */}
-                  <div className="relative h-56 sm:h-64 w-full overflow-hidden bg-slate-100">
+                  {/* Image Container with responsive height */}
+                  <div className="relative h-48 sm:h-56 lg:h-64 w-full overflow-hidden bg-slate-100">
                     <Image
                       src={restaurant.image}
                       alt={`${restaurant.name} - ${restaurant.cuisines.join(", ")} online delivery`}
@@ -199,38 +199,38 @@ export const RestaurantGrid: React.FC = () => {
                     <button
                       type="button"
                       onClick={(e) => toggleFavorite(e, restaurant.id)}
-                      className="absolute top-4 right-4 w-9 h-9 rounded-full bg-white/95 backdrop-blur-xs flex items-center justify-center text-slate-700 hover:text-red-500 transition-colors shadow-md"
+                      className="absolute top-3.5 right-3.5 sm:top-4 sm:right-4 w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-white/95 backdrop-blur-xs flex items-center justify-center text-slate-700 hover:text-red-500 transition-colors shadow-md"
                       aria-label="Add to favorites"
                     >
                       <Heart
-                        className={`w-4 h-4 ${isFav ? "fill-red-500 text-red-500" : ""}`}
+                        className={`w-3.5 h-3.5 sm:w-4 sm:h-4 ${isFav ? "fill-red-500 text-red-500" : ""}`}
                       />
                     </button>
 
                     {/* Promo Offer Tag */}
                     {restaurant.promoTag && (
-                      <div className="absolute bottom-4 left-4 bg-[#0bdcfc] text-slate-950 px-3 py-1.5 rounded-xl text-xs font-black tracking-tight shadow-md flex items-center gap-1.5">
-                        <Percent className="w-3.5 h-3.5 text-slate-950 stroke-[3]" />
+                      <div className="absolute bottom-3 left-3 sm:bottom-4 sm:left-4 bg-[#0bdcfc] text-slate-950 px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-lg sm:rounded-xl text-[11px] sm:text-xs font-black tracking-tight shadow-md flex items-center gap-1 sm:gap-1.5">
+                        <Percent className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-slate-950 stroke-[3]" />
                         <span>{restaurant.promoTag}</span>
                       </div>
                     )}
 
                     {/* Delivery Time Badge */}
-                    <div className="absolute top-4 left-4 bg-slate-950/85 backdrop-blur-xs text-white px-3 py-1.5 rounded-xl text-xs font-bold flex items-center gap-1.5 shadow-md">
-                      <Clock className="w-3.5 h-3.5 text-[#0bdcfc]" />
+                    <div className="absolute top-3 left-3 sm:top-4 sm:left-4 bg-slate-950/85 backdrop-blur-xs text-white px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-lg sm:rounded-xl text-[11px] sm:text-xs font-bold flex items-center gap-1 sm:gap-1.5 shadow-md">
+                      <Clock className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#0bdcfc]" />
                       <span>{restaurant.deliveryTime}</span>
                     </div>
                   </div>
 
-                  {/* Body Content with generous breathing room */}
-                  <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
-                    <div className="space-y-2">
+                  {/* Body Content with responsive padding */}
+                  <div className="p-4 sm:p-6 flex-1 flex flex-col justify-between space-y-3 sm:space-y-4">
+                    <div className="space-y-1.5 sm:space-y-2">
                       {/* Name & Rating */}
-                      <div className="flex items-start justify-between gap-3">
-                        <h3 className="font-extrabold text-slate-950 text-lg sm:text-xl group-hover:text-[#0891b2] transition-colors line-clamp-1">
+                      <div className="flex items-start justify-between gap-2.5 sm:gap-3">
+                        <h3 className="font-extrabold text-slate-950 text-base sm:text-lg lg:text-xl group-hover:text-[#0891b2] transition-colors line-clamp-1">
                           {restaurant.name}
                         </h3>
-                        <div className="flex items-center gap-1 bg-emerald-600 text-white px-2.5 py-1 rounded-lg text-xs font-black flex-shrink-0 shadow-2xs">
+                        <div className="flex items-center gap-1 bg-emerald-600 text-white px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-lg text-xs font-black flex-shrink-0 shadow-2xs">
                           <span>{restaurant.rating}</span>
                           <Star className="w-3 h-3 fill-white text-white" />
                         </div>
@@ -241,7 +241,7 @@ export const RestaurantGrid: React.FC = () => {
                         {restaurant.cuisines.join(" • ")}
                       </p>
 
-                      <div className="flex items-center gap-3 text-xs sm:text-sm text-slate-500 font-medium pt-1">
+                      <div className="flex items-center gap-2 sm:gap-3 text-xs sm:text-sm text-slate-500 font-medium pt-0.5">
                         <span className="flex items-center gap-1 text-slate-600">
                           <MapPin className="w-3.5 h-3.5 text-slate-400" />
                           {restaurant.distance}
@@ -258,9 +258,9 @@ export const RestaurantGrid: React.FC = () => {
                     </div>
 
                     {/* Card Footer */}
-                    <div className="pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-400">
+                    <div className="pt-3 sm:pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-400">
                       {restaurant.isBocardoPass ? (
-                        <span className="inline-flex items-center gap-1 text-[#0891b2] font-bold bg-[#0bdcfc]/10 px-2.5 py-1 rounded-lg">
+                        <span className="inline-flex items-center gap-1 text-[#0891b2] font-bold bg-[#0bdcfc]/10 px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-lg text-[11px] sm:text-xs">
                           ⚡ Bocardo Pass
                         </span>
                       ) : (

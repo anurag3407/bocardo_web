@@ -49,7 +49,7 @@ export const BocardoLogo: React.FC<BocardoLogoProps> = ({
             )}
           </div>
           <span className="text-[10px] uppercase font-semibold tracking-wider text-slate-400">
-            Food & Grocery
+            Food Delivery
           </span>
         </div>
       )}

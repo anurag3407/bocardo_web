@@ -4,9 +4,8 @@ import React from "react";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import CategoryCarousel from "@/components/CategoryCarousel";
-import PopularDishes from "@/components/PopularDishes";
-import AppLaunchBanner from "@/components/AppLaunchBanner";
 import RestaurantGrid from "@/components/RestaurantGrid";
+import AppLaunchBanner from "@/components/AppLaunchBanner";
 import HowItWorks from "@/components/HowItWorks";
 import PartnerSection from "@/components/PartnerSection";
 import FaqSection from "@/components/FaqSection";
@@ -36,9 +35,6 @@ export default function Home() {
 
         {/* Curated Restaurant Grid & Filter System */}
         <RestaurantGrid />
-
-        {/* Chef Specials & Most Ordered Transparent Cutout Dishes */}
-        <PopularDishes />
 
         {/* Official iOS & Android App Launching Soon Showcase */}
         <AppLaunchBanner />

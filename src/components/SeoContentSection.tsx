@@ -155,7 +155,7 @@ export const SeoContentSection: React.FC = () => {
         <div className="pt-8">
           <div className="prose prose-slate max-w-none text-xs sm:text-sm text-slate-600 leading-relaxed">
             <h2 className="text-base sm:text-lg font-black text-slate-900 mb-2">
-              Why Bocardo is India&apos;s Preferred Online Food & Grocery Delivery Platform
+              Why Bocardo is India&apos;s Preferred Online Food Delivery Platform
             </h2>
             <p>
               Looking to order food online from top-rated restaurants near you? Bocardo connects foodies and families across Bengaluru, Mumbai, Delhi NCR, Hyderabad, Pune, and Chennai with the finest culinary establishments in town. Whether you are craving royal Hyderabadi Dum Biryani, wood-fired sourdough pizzas, smash burgers, fresh Atlantic salmon sushi, or delicate French pastries from artisanal bakeries, Bocardo ensures your cravings are satisfied in under 30 minutes.
@@ -174,7 +174,7 @@ export const SeoContentSection: React.FC = () => {
                   Curated Quality & FSSAI Food Hygiene Guarantee
                 </h3>
                 <p>
-                  Every restaurant, cloud kitchen, and grocery partner on Bocardo undergoes rigorous in-person hygiene audits and holds verified FSSAI certifications. Our contactless, tamper-evident safety packaging protects every box, bowl, and beverage from kitchen pass to doorstep.
+                  Every restaurant and cloud kitchen partner on Bocardo undergoes rigorous in-person hygiene audits and holds verified FSSAI certifications. Our contactless, tamper-evident safety packaging protects every box, bowl, and beverage from kitchen pass to doorstep.
                 </p>
 
                 <h3 className="text-sm sm:text-base font-extrabold text-slate-900">

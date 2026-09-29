@@ -12,28 +12,28 @@ export const HowItWorks: React.FC = () => {
   };
 
   return (
-    <section className="py-20 lg:py-28 bg-slate-50/60 border-b border-slate-100">
+    <section className="py-10 sm:py-16 lg:py-20 bg-slate-50/60 border-b border-slate-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Spacious Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-16 space-y-3">
+        {/* Section Header */}
+        <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-12 space-y-2">
           <div className="text-xs uppercase font-extrabold tracking-wider text-[#0891b2]">
             Lightning-Fast Food Delivery
           </div>
-          <h2 className="text-3xl sm:text-4xl font-black tracking-tight text-slate-950">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black tracking-tight text-slate-950">
             How Bocardo delivers to your door
           </h2>
-          <p className="text-sm sm:text-base text-slate-500 font-medium">
+          <p className="text-xs sm:text-base text-slate-500 font-medium">
             Designed for culinary quality, kitchen precision, and zero-detour routing
           </p>
         </div>
 
-        {/* 3 Spacious Steps Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-10">
+        {/* 3 Steps Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-8">
           {HOW_IT_WORKS.map((step) => (
             <div
               key={step.step}
-              className="bg-white rounded-3xl p-8 sm:p-10 border border-slate-200/80 hover:border-[#0bdcfc] shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between"
+              className="bg-white rounded-2xl sm:rounded-3xl p-5 sm:p-8 border border-slate-200/80 hover:border-[#0bdcfc] shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between"
             >
               <div className="space-y-5">
                 <div className="flex items-center justify-between">

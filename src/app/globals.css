@@ -20,7 +20,11 @@
   --primary-dark: #0891b2;
 }
 
+html,
 body {
+  overflow-x: hidden;
+  max-width: 100vw;
+  -webkit-tap-highlight-color: transparent;
   background-color: #ffffff;
   color: #0f172a;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;

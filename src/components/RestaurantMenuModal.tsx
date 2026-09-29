@@ -29,11 +29,11 @@ export const RestaurantMenuModal: React.FC = () => {
   if (!activeRestaurant) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 overflow-y-auto bg-slate-950/70 backdrop-blur-xs">
-      <div className="relative w-full max-w-3xl bg-white rounded-3xl shadow-2xl border border-slate-100 overflow-hidden flex flex-col my-auto max-h-[92vh]">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-6 overflow-y-auto bg-slate-950/70 backdrop-blur-xs">
+      <div className="relative w-full max-w-3xl bg-white rounded-2xl sm:rounded-3xl shadow-2xl border border-slate-100 overflow-hidden flex flex-col my-auto max-h-[94vh] sm:max-h-[92vh]">
         
         {/* Banner with Restaurant Header */}
-        <div className="relative h-48 sm:h-56 w-full flex-shrink-0 bg-slate-900">
+        <div className="relative h-44 sm:h-56 w-full flex-shrink-0 bg-slate-900">
           <Image
             src={activeRestaurant.image}
             alt={activeRestaurant.name}
@@ -47,60 +47,60 @@ export const RestaurantMenuModal: React.FC = () => {
           <button
             type="button"
             onClick={() => setActiveRestaurant(null)}
-            className="absolute top-4 right-4 w-9 h-9 rounded-full bg-black/60 hover:bg-black/90 text-white flex items-center justify-center transition-all z-10"
+            className="absolute top-3.5 right-3.5 sm:top-4 sm:right-4 w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-black/60 hover:bg-black/90 text-white flex items-center justify-center transition-all z-10"
             aria-label="Close restaurant modal"
           >
-            <X className="w-5 h-5" />
+            <X className="w-4 h-4 sm:w-5 sm:h-5" />
           </button>
 
           {/* Header Info Details */}
-          <div className="absolute bottom-4 left-5 right-5 text-white space-y-1">
-            <div className="flex flex-wrap items-center gap-2">
-              <span className="text-xs font-black uppercase tracking-wider bg-[#0bdcfc] text-slate-950 px-2.5 py-0.5 rounded-md">
+          <div className="absolute bottom-3 left-4 right-4 sm:bottom-4 sm:left-5 sm:right-5 text-white space-y-1">
+            <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
+              <span className="text-[10px] sm:text-xs font-black uppercase tracking-wider bg-[#0bdcfc] text-slate-950 px-2 py-0.5 rounded-md">
                 Open Now
               </span>
               {activeRestaurant.isBocardoPass && (
-                <span className="text-xs font-bold bg-white/20 backdrop-blur-xs px-2 py-0.5 rounded-md text-emerald-300">
+                <span className="text-[10px] sm:text-xs font-bold bg-white/20 backdrop-blur-xs px-2 py-0.5 rounded-md text-emerald-300">
                   ⚡ Bocardo Pass
                 </span>
               )}
             </div>
 
-            <h2 className="text-2xl sm:text-3xl font-black tracking-tight text-white">
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-black tracking-tight text-white line-clamp-1">
               {activeRestaurant.name}
             </h2>
 
-            <p className="text-xs sm:text-sm text-slate-200 line-clamp-1">
+            <p className="text-xs text-slate-200 line-clamp-1">
               {activeRestaurant.tagline}
             </p>
 
-            <div className="flex flex-wrap items-center gap-3 text-xs text-slate-300 pt-1">
+            <div className="flex flex-wrap items-center gap-2 sm:gap-3 text-[11px] sm:text-xs text-slate-300 pt-0.5">
               <span className="flex items-center gap-1 text-[#ffcc02] font-black">
-                <Star className="w-3.5 h-3.5 fill-[#ffcc02]" />
+                <Star className="w-3 h-3 sm:w-3.5 sm:h-3.5 fill-[#ffcc02]" />
                 {activeRestaurant.rating} ({activeRestaurant.reviewCount})
               </span>
               <span>•</span>
               <span className="flex items-center gap-1">
-                <Clock className="w-3.5 h-3.5 text-[#0bdcfc]" />
+                <Clock className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#0bdcfc]" />
                 {activeRestaurant.deliveryTime}
               </span>
-              <span>•</span>
-              <span className="flex items-center gap-1">
+              <span className="hidden xs:inline">•</span>
+              <span className="hidden xs:flex items-center gap-1">
                 <MapPin className="w-3.5 h-3.5" />
-                {activeRestaurant.address}
+                <span className="max-w-[120px] truncate">{activeRestaurant.address}</span>
               </span>
             </div>
           </div>
         </div>
 
         {/* Category Tabs */}
-        <div className="flex items-center gap-2 px-5 py-3 border-b border-slate-200 bg-slate-50/80 overflow-x-auto no-scrollbar flex-shrink-0">
+        <div className="flex items-center gap-2 px-3 sm:px-5 py-2.5 sm:py-3 border-b border-slate-200 bg-slate-50/80 overflow-x-auto no-scrollbar flex-shrink-0 touch-pan-x">
           {activeRestaurant.menu.map((cat, idx) => (
             <button
               key={cat.categoryName}
               type="button"
               onClick={() => setActiveTab(idx)}
-              className={`px-3.5 py-1.5 rounded-full text-xs font-bold transition-all whitespace-nowrap ${
+              className={`px-3 sm:px-3.5 py-1 sm:py-1.5 rounded-full text-xs font-bold transition-all whitespace-nowrap ${
                 activeTab === idx
                   ? "bg-slate-900 text-white shadow-xs"
                   : "bg-white text-slate-600 hover:text-slate-950 border border-slate-200"
@@ -112,7 +112,7 @@ export const RestaurantMenuModal: React.FC = () => {
         </div>
 
         {/* Menu Items List */}
-        <div className="p-5 overflow-y-auto space-y-4 flex-1">
+        <div className="p-3 sm:p-5 overflow-y-auto space-y-3 sm:space-y-4 flex-1">
           {activeRestaurant.menu[activeTab]?.items.map((item: FoodItem) => {
             const cartEntry = cart.find((c) => c.food.id === item.id);
             const qty = cartEntry ? cartEntry.quantity : 0;
@@ -120,7 +120,7 @@ export const RestaurantMenuModal: React.FC = () => {
             return (
               <div
                 key={item.id}
-                className="bg-white rounded-2xl p-4 border border-slate-200 hover:border-[#0bdcfc]/60 card-subtle flex gap-4 items-center justify-between"
+                className="bg-white rounded-2xl p-3 sm:p-4 border border-slate-200 hover:border-[#0bdcfc]/60 card-subtle flex gap-3 sm:gap-4 items-center justify-between"
               >
                 <div className="flex-1 space-y-1 pr-2">
                   <div className="flex items-center gap-2">
@@ -160,7 +160,7 @@ export const RestaurantMenuModal: React.FC = () => {
                     {item.description}
                   </p>
 
-                  <div className="flex items-baseline gap-2 pt-1">
+                  <div className="flex items-baseline gap-2 pt-0.5 sm:pt-1">
                     <span className="text-sm font-black text-slate-950">
                       ₹{item.price}
                     </span>
@@ -179,7 +179,7 @@ export const RestaurantMenuModal: React.FC = () => {
 
                 {/* Right: Dish Cutout & Stepper */}
                 <div className="relative flex flex-col items-center flex-shrink-0">
-                  <div className="relative w-24 h-24 rounded-xl bg-slate-50 p-2 border border-slate-100 flex items-center justify-center">
+                  <div className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-xl bg-slate-50 p-1.5 sm:p-2 border border-slate-100 flex items-center justify-center">
                     <div className="relative w-full h-full">
                       <Image
                         src={item.image}

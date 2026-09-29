@@ -35,14 +35,14 @@ export const AppLaunchBanner: React.FC = () => {
   return (
     <section
       id="app-launch-section"
-      className="py-24 lg:py-32 bg-black text-white relative overflow-hidden select-none border-t border-neutral-900"
+      className="py-14 sm:py-20 lg:py-28 bg-black text-white relative overflow-hidden select-none border-t border-neutral-900"
     >
       {/* Subtle deep ambient glow behind the iPhone */}
       <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-[500px] h-[500px] bg-[#00C2E8]/10 rounded-full blur-[140px] pointer-events-none" />
       <div className="absolute bottom-10 left-10 w-96 h-96 bg-white/[0.02] rounded-full blur-[100px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
           
           {/* Left Column: Launching Soon Content */}
           <div className="lg:col-span-6 space-y-6 sm:space-y-8">
@@ -58,10 +58,10 @@ export const AppLaunchBanner: React.FC = () => {
 
             {/* Apple-Keynote Style Clean Typography */}
             <div className="space-y-4">
-              <h2 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-black tracking-tight text-white leading-[1.06]">
+              <h2 className="text-3xl sm:text-5xl lg:text-6xl xl:text-7xl font-black tracking-tight text-white leading-[1.08] sm:leading-[1.06]">
                 The full Bocardo experience in your pocket.
               </h2>
-              <p className="text-base sm:text-lg text-neutral-400 font-normal max-w-xl leading-relaxed">
+              <p className="text-sm sm:text-base lg:text-lg text-neutral-400 font-normal max-w-xl leading-relaxed">
                 Superfast 20-minute order dispatch, live GPS road tracking with Bocardo RouteEngine™,
                 and India&apos;s finest kitchens and cloud brands—engineered exclusively for iOS and Android.
               </p>
@@ -156,7 +156,7 @@ export const AppLaunchBanner: React.FC = () => {
             <div className="relative mx-auto">
               
               {/* iPhone 16 Pro Style Hardware Chassis */}
-              <div className="relative w-[304px] h-[618px] rounded-[52px] bg-[#121418] p-[10px] shadow-[0_25px_70px_-15px_rgba(0,0,0,0.95),0_0_40px_rgba(11,220,252,0.18)] border border-neutral-700/60 ring-1 ring-white/10 select-none">
+              <div className="relative w-[285px] sm:w-[304px] h-[580px] sm:h-[618px] rounded-[48px] sm:rounded-[52px] bg-[#121418] p-[8px] sm:p-[10px] shadow-[0_25px_70px_-15px_rgba(0,0,0,0.95),0_0_40px_rgba(11,220,252,0.18)] border border-neutral-700/60 ring-1 ring-white/10 select-none">
                 
                 {/* Physical Hardware Buttons (Titanium Edges) */}
                 {/* Action Button */}
