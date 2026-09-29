@@ -120,7 +120,7 @@ export const CategoryCarousel: React.FC = () => {
                   <div className="relative w-30 h-30 sm:w-34 sm:h-34 transition-transform duration-300 group-hover:scale-110 drop-shadow-md">
                     <Image
                       src={cat.image}
-                      alt={cat.name}
+                      alt={`Order ${cat.name} online - ${cat.highlightText || "Fresh and delicious food delivery"}`}
                       fill
                       sizes="160px"
                       className="object-contain"

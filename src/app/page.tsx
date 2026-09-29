@@ -10,6 +10,7 @@ import RestaurantGrid from "@/components/RestaurantGrid";
 import HowItWorks from "@/components/HowItWorks";
 import PartnerSection from "@/components/PartnerSection";
 import FaqSection from "@/components/FaqSection";
+import SeoContentSection from "@/components/SeoContentSection";
 import Footer from "@/components/Footer";
 import CartDrawer from "@/components/CartDrawer";
 import RestaurantMenuModal from "@/components/RestaurantMenuModal";
@@ -50,6 +51,9 @@ export default function Home() {
 
         {/* Frequently Asked Questions Accordion */}
         <FaqSection />
+
+        {/* SEO Topical Knowledge & Hyperlocal City Coverage */}
+        <SeoContentSection />
       </main>
 
       {/* Modern Deliveroo-Grade Footer */}

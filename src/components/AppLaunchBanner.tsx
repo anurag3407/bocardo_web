@@ -224,7 +224,7 @@ export const AppLaunchBanner: React.FC = () => {
                       <div className="w-7 h-7 rounded-full bg-neutral-900 border border-neutral-700/80 flex items-center justify-center p-1 shadow-inner relative">
                         <Image
                           src="/logo-circle.png"
-                          alt="Bocardo"
+                          alt="Bocardo iOS and Android Delivery App Icon"
                           width={20}
                           height={20}
                           className="object-contain"
@@ -304,7 +304,7 @@ export const AppLaunchBanner: React.FC = () => {
                       <div className="relative h-20 w-full overflow-hidden bg-neutral-800">
                         <Image
                           src="/hero/indian_feast_flank.png"
-                          alt="Biryani Feast"
+                          alt="Royal Dum Biryani Feast on Bocardo mobile app"
                           fill
                           className="object-cover"
                         />

@@ -177,7 +177,7 @@ export const RestaurantGrid: React.FC = () => {
             {filteredRestaurants.map((restaurant) => {
               const isFav = !!favorites[restaurant.id];
               return (
-                <div
+                <article
                   key={restaurant.id}
                   onClick={() => setActiveRestaurant(restaurant)}
                   className="group bg-white rounded-3xl overflow-hidden border border-slate-200/80 hover:border-[#0bdcfc]/60 shadow-xs hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer flex flex-col justify-between"
@@ -186,7 +186,7 @@ export const RestaurantGrid: React.FC = () => {
                   <div className="relative h-56 sm:h-64 w-full overflow-hidden bg-slate-100">
                     <Image
                       src={restaurant.image}
-                      alt={restaurant.name}
+                      alt={`${restaurant.name} - ${restaurant.cuisines.join(", ")} online delivery`}
                       fill
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 400px"
                       className="object-cover transition-transform duration-700 group-hover:scale-105"
@@ -272,7 +272,7 @@ export const RestaurantGrid: React.FC = () => {
                       </span>
                     </div>
                   </div>
-                </div>
+                </article>
               );
             })}
           </div>

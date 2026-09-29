@@ -34,7 +34,7 @@ export const PartnerSection: React.FC = () => {
               <div className="relative h-64 sm:h-72 w-full overflow-hidden bg-slate-900">
                 <Image
                   src="/partners/restaurant-partner-horizontal.jpg"
-                  alt="Restaurant Partner"
+                  alt="Partner your restaurant or cloud kitchen with Bocardo food delivery"
                   fill
                   priority
                   sizes="(max-width: 768px) 100vw, 50vw"
@@ -77,7 +77,7 @@ export const PartnerSection: React.FC = () => {
               <div className="relative h-64 sm:h-72 w-full overflow-hidden bg-slate-900">
                 <Image
                   src="/partners/delivery-rider.jpg"
-                  alt="Ride with Bocardo Delivery Partner"
+                  alt="Join Bocardo as an EV delivery fleet partner and rider in India"
                   fill
                   priority
                   sizes="(max-width: 768px) 100vw, 50vw"

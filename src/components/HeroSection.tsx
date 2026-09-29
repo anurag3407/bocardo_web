@@ -229,8 +229,8 @@ export const HeroSection: React.FC = () => {
         </h1>
 
         {/* Subtitle matching reference */}
-        <p className="text-xs sm:text-sm text-white/90 font-medium mb-7 tracking-wide">
-          Fresh food &bull; Great taste &bull; Fast delivery
+        <p className="text-xs sm:text-sm text-white/95 font-medium mb-7 tracking-wide">
+          Fresh food &bull; Great taste &bull; Fast 20-30 min delivery across India
         </p>
 
         {/* Search Bar Pill matching reference */}
@@ -310,7 +310,7 @@ export const HeroSection: React.FC = () => {
               <div className="relative w-24 h-24 sm:w-28 sm:h-28 -mr-2 -mb-2 group-hover:scale-105 transition-transform duration-300">
                 <Image
                   src="/hero/mockup_burger.png"
-                  alt="Food Delivery"
+                  alt="Order Food Online - Burgers, Pizzas and Quick Bites on Bocardo"
                   fill
                   sizes="120px"
                   className="object-contain drop-shadow-md"
@@ -346,7 +346,7 @@ export const HeroSection: React.FC = () => {
               <div className="relative w-24 h-24 sm:w-28 sm:h-28 -mr-2 -mb-2 group-hover:scale-105 transition-transform duration-300">
                 <Image
                   src="/hero/mockup_coffee.png"
-                  alt="Gourmet & Cafes"
+                  alt="Artisanal Bakery, Fresh Bread and Specialty Coffee Delivered"
                   fill
                   sizes="120px"
                   className="object-contain drop-shadow-md"
@@ -379,7 +379,7 @@ export const HeroSection: React.FC = () => {
               <div className="relative w-24 h-24 sm:w-28 sm:h-28 -mr-2 -mb-2 group-hover:scale-105 transition-transform duration-300">
                 <Image
                   src="/hero/mockup_pasta.png"
-                  alt="Bocardo Pass"
+                  alt="Bocardo Pass Free ₹0 Delivery Subscription Program"
                   fill
                   sizes="120px"
                   className="object-contain drop-shadow-md"

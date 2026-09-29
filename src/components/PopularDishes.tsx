@@ -34,7 +34,7 @@ export const PopularDishes: React.FC = () => {
             const qty = cartEntry ? cartEntry.quantity : 0;
 
             return (
-              <div
+              <article
                 key={dish.id}
                 className="bg-slate-50/60 hover:bg-white rounded-3xl p-6 border border-slate-200/80 hover:border-[#0bdcfc]/60 shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between group"
               >
@@ -95,7 +95,7 @@ export const PopularDishes: React.FC = () => {
                       <div className="relative w-full h-full transition-transform duration-300 group-hover:scale-108">
                         <Image
                           src={dish.image}
-                          alt={dish.name}
+                          alt={`${dish.name} - Fresh dish from ${dish.restaurantName} online delivery`}
                           fill
                           sizes="140px"
                           className="object-contain"
@@ -158,7 +158,7 @@ export const PopularDishes: React.FC = () => {
                   )}
                 </div>
 
-              </div>
+              </article>
             );
           })}
         </div>

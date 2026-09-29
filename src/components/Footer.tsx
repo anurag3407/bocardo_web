@@ -78,7 +78,7 @@ export const Footer: React.FC = () => {
             </h4>
             <ul className="space-y-2.5 text-neutral-400">
               <li>
-                <a href="#" className="hover:text-[#0bdcfc] transition-colors">
+                <a href="#app-launch-section" className="hover:text-[#0bdcfc] transition-colors">
                   Bocardo Pass (₹0 Delivery)
                 </a>
               </li>
@@ -105,7 +105,7 @@ export const Footer: React.FC = () => {
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-[#0bdcfc] transition-colors">
+                <a href="#how-it-works" className="hover:text-[#0bdcfc] transition-colors">
                   RouteEngine™ Road Logistics API
                 </a>
               </li>
@@ -273,9 +273,12 @@ export const Footer: React.FC = () => {
           <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs text-neutral-400">
             {cities.map((city, idx) => (
               <React.Fragment key={city}>
-                <span className="hover:text-[#0bdcfc] transition-colors cursor-pointer">
-                  {city}
-                </span>
+                <a
+                  href={`/?city=${city.toLowerCase().replace(/\s+/g, "-")}`}
+                  className="hover:text-[#0bdcfc] transition-colors"
+                >
+                  Food Delivery in {city}
+                </a>
                 {idx < cities.length - 1 && (
                   <span className="text-neutral-700">•</span>
                 )}
