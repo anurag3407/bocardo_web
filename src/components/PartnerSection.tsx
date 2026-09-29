@@ -21,7 +21,7 @@ export const PartnerSection: React.FC = () => {
             Partner your restaurant or ride with us
           </h2>
           <p className="text-sm sm:text-base text-slate-500 font-medium">
-            Join thousands of kitchens and riders powering fast food delivery across the city
+            Join thousands of kitchens and riders powering fast food delivery across India
           </p>
         </div>
 
@@ -33,15 +33,16 @@ export const PartnerSection: React.FC = () => {
             <div>
               <div className="relative h-64 sm:h-72 w-full overflow-hidden bg-slate-900">
                 <Image
-                  src="/restaurants/pizza-palace.jpg"
+                  src="/partners/restaurant-partner-horizontal.jpg"
                   alt="Restaurant Partner"
                   fill
+                  priority
                   sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-cover group-hover:scale-105 transition-transform duration-700 opacity-90"
                 />
                 <div className="absolute top-5 left-5 bg-white/95 backdrop-blur-xs px-3.5 py-1.5 rounded-full text-xs font-bold text-slate-950 flex items-center gap-2 shadow-sm">
                   <Utensils className="w-4 h-4 text-[#0891b2]" />
-                  <span>Restaurants</span>
+                  <span>Restaurants & Kitchens</span>
                 </div>
               </div>
 
@@ -50,7 +51,7 @@ export const PartnerSection: React.FC = () => {
                   Partner with Bocardo
                 </h3>
                 <p className="text-sm sm:text-base text-slate-600 leading-relaxed font-normal">
-                  Expand your restaurant&apos;s reach, fill slow weekday covers, and let our zero-emission fleet deliver your hot dishes with precision road tracking.
+                  Expand your restaurant&apos;s reach, grow your cloud kitchen orders, and let our zero-emission fleet deliver your hot dishes with precision road tracking.
                 </p>
               </div>
             </div>
@@ -62,7 +63,7 @@ export const PartnerSection: React.FC = () => {
                   setPartnerModalType("restaurant");
                   setIsPartnerModalOpen(true);
                 }}
-                className="w-full py-4 rounded-2xl bg-slate-950 hover:bg-[#0bdcfc] text-white hover:text-slate-950 font-black text-xs sm:text-sm transition-all flex items-center justify-center gap-2 group-hover:shadow-md"
+                className="w-full py-4 rounded-2xl bg-slate-950 hover:bg-[#0bdcfc] text-white hover:text-slate-950 font-black text-xs sm:text-sm transition-all flex items-center justify-center gap-2 group-hover:shadow-md cursor-pointer"
               >
                 <span>Partner Your Kitchen</span>
                 <ArrowRight className="w-4 h-4" />
@@ -75,9 +76,10 @@ export const PartnerSection: React.FC = () => {
             <div>
               <div className="relative h-64 sm:h-72 w-full overflow-hidden bg-slate-900">
                 <Image
-                  src="/restaurants/burger-craft.jpg"
-                  alt="Ride with Bocardo"
+                  src="/partners/delivery-rider.jpg"
+                  alt="Ride with Bocardo Delivery Partner"
                   fill
+                  priority
                   sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-cover group-hover:scale-105 transition-transform duration-700 opacity-90"
                 />
@@ -92,7 +94,7 @@ export const PartnerSection: React.FC = () => {
                   Ride with Bocardo
                 </h3>
                 <p className="text-sm sm:text-base text-slate-600 leading-relaxed font-normal">
-                  Flexible hours that fit your lifestyle. Competitive pay, keep 100% of customer tips, and receive subsidized electric bike gear.
+                  Flexible hours that fit your lifestyle. Competitive earnings, keep 100% of customer tips, and receive subsidized electric vehicle gear.
                 </p>
               </div>
             </div>
@@ -104,9 +106,9 @@ export const PartnerSection: React.FC = () => {
                   setPartnerModalType("rider");
                   setIsPartnerModalOpen(true);
                 }}
-                className="w-full py-4 rounded-2xl bg-slate-950 hover:bg-[#0bdcfc] text-white hover:text-slate-950 font-black text-xs sm:text-sm transition-all flex items-center justify-center gap-2 group-hover:shadow-md"
+                className="w-full py-4 rounded-2xl bg-slate-950 hover:bg-[#0bdcfc] text-white hover:text-slate-950 font-black text-xs sm:text-sm transition-all flex items-center justify-center gap-2 group-hover:shadow-md cursor-pointer"
               >
-                <span>Apply as a Rider</span>
+                <span>Apply as a Delivery Partner</span>
                 <ArrowRight className="w-4 h-4" />
               </button>
             </div>

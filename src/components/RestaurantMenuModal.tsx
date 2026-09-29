@@ -162,11 +162,11 @@ export const RestaurantMenuModal: React.FC = () => {
 
                   <div className="flex items-baseline gap-2 pt-1">
                     <span className="text-sm font-black text-slate-950">
-                      £{item.price.toFixed(2)}
+                      ₹{item.price}
                     </span>
                     {item.originalPrice && (
                       <span className="text-xs text-slate-400 line-through">
-                        £{item.originalPrice.toFixed(2)}
+                        ₹{item.originalPrice}
                       </span>
                     )}
                     {item.calories && (
@@ -234,10 +234,8 @@ export const RestaurantMenuModal: React.FC = () => {
             <div>
               <div className="text-xs text-slate-400">Basket subtotal</div>
               <div className="text-base font-black">
-                {cart.reduce((a, b) => a + b.quantity, 0)} items • £
-                {cart
-                  .reduce((a, b) => a + b.food.price * b.quantity, 0)
-                  .toFixed(2)}
+                {cart.reduce((a, b) => a + b.quantity, 0)} items • ₹
+                {Math.round(cart.reduce((a, b) => a + b.food.price * b.quantity, 0))}
               </div>
             </div>
 

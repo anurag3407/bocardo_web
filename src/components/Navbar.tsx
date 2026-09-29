@@ -185,7 +185,7 @@ export const Navbar: React.FC = () => {
                     {cartCount}
                   </span>
                   <span className="hidden sm:inline text-xs font-black">
-                    £{subtotal.toFixed(2)}
+                    ₹{Math.round(subtotal)}
                   </span>
                 </div>
               )}

@@ -121,7 +121,7 @@ export const HeroSection: React.FC = () => {
             >
               <MapPin className="w-3.5 h-3.5 text-white/90" />
               <span className="max-w-[150px] truncate">
-                {selectedAddress.address || "Flat 4, 18 Baker Street, Marylebone"}
+                {selectedAddress.address || "Flat 402, 12th Main Road, Indiranagar"}
               </span>
               <ChevronDown className="w-3 h-3 text-white/80" />
             </button>
@@ -253,7 +253,7 @@ export const HeroSection: React.FC = () => {
                   Deliver to
                 </div>
                 <div className="text-xs font-bold text-slate-900 flex items-center gap-1 max-w-[130px] sm:max-w-[160px] truncate leading-none">
-                  <span className="truncate">{selectedAddress.address || "Flat 4, 18 Baker Street..."}</span>
+                  <span className="truncate">{selectedAddress.address || "Flat 402, Indiranagar..."}</span>
                   <ChevronDown className="w-3 h-3 text-slate-400 flex-shrink-0" />
                 </div>
               </div>

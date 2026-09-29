@@ -196,7 +196,7 @@ export const CartDrawer: React.FC = () => {
                         {item.food.restaurantName}
                       </div>
                       <div className="text-xs font-black text-slate-950 mt-0.5">
-                        £{(item.food.price * item.quantity).toFixed(2)}
+                        ₹{Math.round(item.food.price * item.quantity)}
                       </div>
                     </div>
 
@@ -233,18 +233,18 @@ export const CartDrawer: React.FC = () => {
                     <div className="flex items-center justify-between text-xs">
                       <span className="font-bold text-[#0891b2] flex items-center gap-1">
                         <Sparkles className="w-3.5 h-3.5" />
-                        {subtotal >= 20
+                        {subtotal >= 299
                           ? "You unlocked FREE delivery!"
-                          : `Add £${(20 - subtotal).toFixed(2)} for FREE delivery`}
+                          : `Add ₹${Math.round(299 - subtotal)} for FREE delivery`}
                       </span>
                       <span className="text-[11px] font-bold text-slate-600">
-                        {subtotal >= 20 ? "100%" : `${Math.min(100, Math.round((subtotal / 20) * 100))}%`}
+                        {subtotal >= 299 ? "100%" : `${Math.min(100, Math.round((subtotal / 299) * 100))}%`}
                       </span>
                     </div>
                     <div className="w-full bg-white h-2 rounded-full overflow-hidden">
                       <div
                         className="bg-[#0bdcfc] h-full rounded-full transition-all duration-300"
-                        style={{ width: `${Math.min(100, (subtotal / 20) * 100)}%` }}
+                        style={{ width: `${Math.min(100, (subtotal / 299) * 100)}%` }}
                       />
                     </div>
                   </div>
@@ -293,19 +293,19 @@ export const CartDrawer: React.FC = () => {
                         <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
                         Code {promoCode} active
                       </span>
-                      <span>-£{discount.toFixed(2)}</span>
+                      <span>-₹{Math.round(discount)}</span>
                     </div>
                   )}
                 </div>
 
-                {/* Driver Tip (Deliveroo style) */}
+                {/* Driver Tip (Swiggy / Deliveroo style) */}
                 <div className="space-y-2 pt-2 border-t border-slate-100">
                   <div className="flex items-center justify-between text-xs font-bold text-slate-800">
-                    <span>Tip your rider</span>
-                    <span className="text-slate-400 font-normal">100% goes to driver</span>
+                    <span>Tip your delivery partner</span>
+                    <span className="text-slate-400 font-normal">100% goes to rider</span>
                   </div>
                   <div className="grid grid-cols-4 gap-2">
-                    {[0, 1.0, 1.5, 2.5].map((tip) => (
+                    {[0, 20, 30, 50].map((tip) => (
                       <button
                         key={tip}
                         type="button"
@@ -316,7 +316,7 @@ export const CartDrawer: React.FC = () => {
                             : "bg-slate-50 text-slate-700 border-slate-200 hover:bg-slate-100"
                         }`}
                       >
-                        {tip === 0 ? "None" : `£${tip.toFixed(2)}`}
+                        {tip === 0 ? "None" : `₹${tip}`}
                       </button>
                     ))}
                   </div>
@@ -331,7 +331,7 @@ export const CartDrawer: React.FC = () => {
                     type="text"
                     value={orderInstructions}
                     onChange={(e) => setOrderInstructions(e.target.value)}
-                    placeholder="e.g. Ring flat buzzer #4, leave at door"
+                    placeholder="e.g. Ring doorbell, leave at security gate"
                     className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-800 outline-none focus:border-[#0bdcfc]"
                   />
                 </div>
@@ -346,13 +346,13 @@ export const CartDrawer: React.FC = () => {
               <div className="space-y-1.5 text-xs text-slate-600">
                 <div className="flex justify-between">
                   <span>Subtotal</span>
-                  <span className="font-semibold text-slate-900">£{subtotal.toFixed(2)}</span>
+                  <span className="font-semibold text-slate-900">₹{Math.round(subtotal)}</span>
                 </div>
 
                 {discount > 0 && (
                   <div className="flex justify-between text-emerald-600 font-bold">
                     <span>Launch Discount (50%)</span>
-                    <span>-£{discount.toFixed(2)}</span>
+                    <span>-₹{Math.round(discount)}</span>
                   </div>
                 )}
 
@@ -362,26 +362,26 @@ export const CartDrawer: React.FC = () => {
                     {deliveryFee === 0 ? (
                       <span className="text-emerald-600 font-bold">FREE</span>
                     ) : (
-                      `£${deliveryFee.toFixed(2)}`
+                      `₹${deliveryFee}`
                     )}
                   </span>
                 </div>
 
                 <div className="flex justify-between">
-                  <span>Service Fee</span>
-                  <span>£{serviceFee.toFixed(2)}</span>
+                  <span>Service & Packaging Fee</span>
+                  <span>₹{serviceFee}</span>
                 </div>
 
                 {tipAmount > 0 && (
                   <div className="flex justify-between">
                     <span>Rider Tip</span>
-                    <span>£{tipAmount.toFixed(2)}</span>
+                    <span>₹{tipAmount}</span>
                   </div>
                 )}
 
                 <div className="pt-2 border-t border-slate-200 flex justify-between text-sm font-black text-slate-950">
                   <span>Total to Pay</span>
-                  <span className="text-base text-[#0891b2]">£{total.toFixed(2)}</span>
+                  <span className="text-base text-[#0891b2]">₹{Math.round(total)}</span>
                 </div>
               </div>
 
@@ -390,13 +390,13 @@ export const CartDrawer: React.FC = () => {
                 type="button"
                 onClick={handleCheckout}
                 disabled={isCheckingOut}
-                className="w-full py-3.5 rounded-xl bg-[#0bdcfc] hover:bg-[#00caeb] active:scale-98 text-slate-950 font-extrabold text-sm shadow-md transition-all flex items-center justify-center gap-2"
+                className="w-full py-3.5 rounded-xl bg-[#0bdcfc] hover:bg-[#00caeb] active:scale-98 text-slate-950 font-extrabold text-sm shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer"
               >
                 {isCheckingOut ? (
                   <span>Securing Order...</span>
                 ) : (
                   <>
-                    <span>Place Order • £{total.toFixed(2)}</span>
+                    <span>Place Order • ₹{Math.round(total)}</span>
                     <ArrowRight className="w-4 h-4" />
                   </>
                 )}
@@ -404,7 +404,7 @@ export const CartDrawer: React.FC = () => {
 
               <div className="flex items-center justify-center gap-2 text-[10px] text-slate-400">
                 <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
-                <span>Encrypted 256-bit secure checkout • Apple Pay & Cards</span>
+                <span>Encrypted 256-bit secure checkout • UPI, Cards & Net Banking</span>
               </div>
             </div>
           )}

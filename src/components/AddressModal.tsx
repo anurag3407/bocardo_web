@@ -31,7 +31,7 @@ export const AddressModal: React.FC = () => {
       id: "custom-" + Date.now(),
       label: "Custom Address",
       address: customAddress,
-      postcode: "W1 " + Math.floor(100 + Math.random() * 900),
+      postcode: "560" + Math.floor(100 + Math.random() * 900),
       icon: "other" as const,
     };
     setSelectedAddress(newAddr);
@@ -106,14 +106,14 @@ export const AddressModal: React.FC = () => {
         {/* Enter new address form */}
         <form onSubmit={handleAddNew} className="space-y-3 pt-3 border-t border-slate-100">
           <label className="text-[11px] font-bold text-slate-600 uppercase tracking-wider block">
-            Or type a new street or postcode
+            Or type a new street or landmark
           </label>
           <div className="flex gap-2">
             <input
               type="text"
               value={customAddress}
               onChange={(e) => setCustomAddress(e.target.value)}
-              placeholder="e.g. 10 Downing St, London"
+              placeholder="e.g. 100ft Road, Indiranagar, Bengaluru"
               className="flex-1 px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-900 outline-none focus:border-[#0bdcfc]"
             />
             <button

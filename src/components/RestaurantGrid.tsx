@@ -126,7 +126,7 @@ export const RestaurantGrid: React.FC = () => {
         <div className="flex items-center gap-3 overflow-x-auto no-scrollbar pb-6 pt-1">
           {[
             { id: "all", label: "All Restaurants" },
-            { id: "pass", label: "⚡ Bocardo Pass (£0 Del)" },
+            { id: "pass", label: "⚡ Bocardo Pass (₹0 Del)" },
             { id: "fast", label: "Under 25 mins" },
             { id: "rated", label: "Top Rated (★ 4.9)" },
             { id: "offers", label: "Offers & Perks" },
@@ -251,7 +251,7 @@ export const RestaurantGrid: React.FC = () => {
                           {restaurant.deliveryFee === 0 ? (
                             <strong className="text-emerald-600 font-bold">Free Delivery</strong>
                           ) : (
-                            `£${restaurant.deliveryFee.toFixed(2)} delivery`
+                            `₹${restaurant.deliveryFee} delivery`
                           )}
                         </span>
                       </div>
@@ -264,7 +264,7 @@ export const RestaurantGrid: React.FC = () => {
                           ⚡ Bocardo Pass
                         </span>
                       ) : (
-                        <span>Min £{restaurant.minOrder.toFixed(0)}</span>
+                        <span>Min ₹{restaurant.minOrder}</span>
                       )}
 
                       <span className="font-bold text-slate-600 group-hover:text-slate-950 transition-colors">

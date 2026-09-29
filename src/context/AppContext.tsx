@@ -79,22 +79,22 @@ const defaultAddresses: Address[] = [
   {
     id: "1",
     label: "Home",
-    address: "Flat 4, 18 Baker Street, Marylebone",
-    postcode: "W1U 3BL",
+    address: "Flat 402, 12th Main Road, Indiranagar",
+    postcode: "560038",
     icon: "home",
   },
   {
     id: "2",
     label: "Work",
-    address: "Level 14, 100 Bishopsgate, City of London",
-    postcode: "EC2N 4AG",
+    address: "WeWork Galaxy, 43 Residency Road, Bengaluru",
+    postcode: "560025",
     icon: "work",
   },
   {
     id: "3",
-    label: "Soho Studio",
-    address: "42 Dean Street, Soho",
-    postcode: "W1D 4PZ",
+    label: "Studio",
+    address: "100 Feet Road, HAL 2nd Stage, Indiranagar",
+    postcode: "560008",
     icon: "other",
   },
 ];
@@ -106,8 +106,8 @@ const defaultCartItem: CartItem = {
     id: "pop-1",
     name: "Double Truffle Smash Burger",
     description: "Two 3oz aged beef patties, black truffle glaze, Monterey Jack, caramelised shallots.",
-    price: 11.5,
-    originalPrice: 13.5,
+    price: 299,
+    originalPrice: 349,
     image: "/food/burger.png",
     isVeg: false,
     isBestseller: true,
@@ -123,7 +123,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
 }) => {
   const [cart, setCart] = useState<CartItem[]>([defaultCartItem]);
   const [isCartOpen, setIsCartOpen] = useState(false);
-  const [tipAmount, setTipAmount] = useState(1.5);
+  const [tipAmount, setTipAmount] = useState(30);
   const [promoCode, setPromoCode] = useState("");
   const [discount, setDiscount] = useState(0);
 
@@ -192,20 +192,20 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
     (acc, item) => acc + item.food.price * item.quantity,
     0
   );
-  const deliveryFee = deliveryType === "collection" || subtotal > 20 || subtotal === 0 ? 0 : 1.49;
-  const serviceFee = subtotal > 0 ? 0.99 : 0;
+  const deliveryFee = deliveryType === "collection" || subtotal > 299 || subtotal === 0 ? 0 : 35;
+  const serviceFee = subtotal > 0 ? 15 : 0;
 
   const applyPromo = (code: string) => {
     const clean = code.trim().toUpperCase();
     if (clean === "BOCARDO50") {
       setPromoCode("BOCARDO50");
-      const disc = Math.round(subtotal * 0.5 * 100) / 100;
+      const disc = Math.round(subtotal * 0.5);
       setDiscount(disc);
       showToast("🎉 Promo BOCARDO50 applied! 50% discount added.");
       return { success: true, message: "50% launch discount applied!" };
     } else if (clean === "FREEDEL") {
       setPromoCode("FREEDEL");
-      setDiscount(1.49);
+      setDiscount(35);
       showToast("🚚 Free delivery applied!");
       return { success: true, message: "Free delivery applied!" };
     } else {

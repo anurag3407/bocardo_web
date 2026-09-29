@@ -142,11 +142,11 @@ export const PopularDishes: React.FC = () => {
                 <div className="mt-6 pt-4 border-t border-slate-200/60 flex items-center justify-between text-xs sm:text-sm">
                   <div className="flex items-baseline gap-2">
                     <span className="text-lg font-black text-slate-950">
-                      £{dish.price.toFixed(2)}
+                      ₹{dish.price}
                     </span>
                     {dish.originalPrice && (
                       <span className="text-xs text-slate-400 line-through">
-                        £{dish.originalPrice.toFixed(2)}
+                        ₹{dish.originalPrice}
                       </span>
                     )}
                   </div>
