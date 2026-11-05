@@ -1,10 +1,10 @@
 import React from "react";
-import { FAQS, RESTAURANTS } from "@/data/mockData";
+import { FAQS } from "@/data/content";
 
 export default function StructuredData() {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://bocardo.in";
 
-  // 1. WebSite Schema with Sitelinks SearchBox
+  // 1. WebSite Schema
   const websiteSchema = {
     "@context": "https://schema.org",
     "@type": "WebSite",
@@ -20,14 +20,6 @@ export default function StructuredData() {
       "Online food and bakery delivery platform in India with live GPS RouteEngine™ tracking.",
     "publisher": {
       "@id": `${baseUrl}/#organization`,
-    },
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": {
-        "@type": "EntryPoint",
-        "urlTemplate": `${baseUrl}/?search={search_term_string}`,
-      },
-      "query-input": "required name=search_term_string",
     },
     "inLanguage": "en-IN",
   };
@@ -150,40 +142,8 @@ export default function StructuredData() {
     })),
   };
 
-  // 5. ItemList Schema for All Restaurants (Rich star rating and card snippets)
-  const restaurantListSchema = {
-    "@context": "https://schema.org",
-    "@type": "ItemList",
-    "name": "All Restaurants on Bocardo",
-    "description":
-      "Explore curated restaurants and artisan kitchens delivering in your city.",
-    "itemListElement": RESTAURANTS.map((restaurant, idx) => ({
-      "@type": "ListItem",
-      "position": idx + 1,
-      "item": {
-        "@type": "Restaurant",
-        "name": restaurant.name,
-        "image": `${baseUrl}${restaurant.image}`,
-        "description": restaurant.tagline,
-        "servesCuisine": restaurant.cuisines,
-        "priceRange": "₹₹",
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": restaurant.address,
-          "addressCountry": "IN",
-        },
-        "aggregateRating": {
-          "@type": "AggregateRating",
-          "ratingValue": restaurant.rating.toString(),
-          "bestRating": "5",
-          "worstRating": "1",
-          "ratingCount": restaurant.reviewCount.toString(),
-        },
-      },
-    })),
-  };
 
-  // 6. SoftwareApplication Schema for Bocardo Mobile Apps
+  // 5. SoftwareApplication Schema for Bocardo Mobile Apps
   const appSchema = {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
@@ -194,39 +154,9 @@ export default function StructuredData() {
       "@type": "Offer",
       "price": "0",
       "priceCurrency": "INR",
-    },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "ratingCount": "14800",
-    },
+    }
   };
 
-  // 7. BreadcrumbList Schema
-  const breadcrumbSchema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Home",
-        "item": baseUrl,
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "Food Delivery",
-        "item": `${baseUrl}/#restaurants-section`,
-      },
-      {
-        "@type": "ListItem",
-        "position": 3,
-        "name": "All Restaurants",
-        "item": `${baseUrl}/#restaurants-section`,
-      },
-    ],
-  };
 
   return (
     <>
@@ -248,15 +178,7 @@ export default function StructuredData() {
       />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(restaurantListSchema) }}
-      />
-      <script
-        type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(appSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
     </>
   );

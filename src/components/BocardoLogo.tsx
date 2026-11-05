@@ -28,7 +28,6 @@ export const BocardoLogo: React.FC<BocardoLogoProps> = ({
           width={size}
           height={size}
           className="object-contain w-full h-full"
-          priority
         />
       </div>
 

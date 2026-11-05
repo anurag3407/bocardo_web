@@ -1,68 +1,23 @@
-"use client";
-
-import React from "react";
-import Navbar from "@/components/Navbar";
-import HeroSection from "@/components/HeroSection";
-import CategoryCarousel from "@/components/CategoryCarousel";
-import RestaurantGrid from "@/components/RestaurantGrid";
-import AppLaunchBanner from "@/components/AppLaunchBanner";
-import HowItWorks from "@/components/HowItWorks";
-import PartnerSection from "@/components/PartnerSection";
-import FaqSection from "@/components/FaqSection";
-import SeoContentSection from "@/components/SeoContentSection";
+import Hero from "@/components/Hero";
+import Categories from "@/components/Categories";
+import Features from "@/components/Features";
+import AppDownload from "@/components/AppDownload";
+import Faq from "@/components/Faq";
 import Footer from "@/components/Footer";
-import CartDrawer from "@/components/CartDrawer";
-import RestaurantMenuModal from "@/components/RestaurantMenuModal";
-import LiveTrackingModal from "@/components/LiveTrackingModal";
-import PartnerModal from "@/components/PartnerModal";
-import AuthModal from "@/components/AuthModal";
-import AddressModal from "@/components/AddressModal";
-import Toast from "@/components/Toast";
+import MobileAppBar from "@/components/MobileAppBar";
 
 export default function Home() {
   return (
     <div className="min-h-screen flex flex-col bg-white">
-      {/* Navigation */}
-      <Navbar />
-
-      {/* Main Content */}
       <main className="flex-1">
-        {/* Deliveroo-style Hero */}
-        <HeroSection />
-
-        {/* Swiggy-style What's on your mind category carousel */}
-        <CategoryCarousel />
-
-        {/* Curated Restaurant Grid & Filter System */}
-        <RestaurantGrid />
-
-        {/* Official iOS & Android App Launching Soon Showcase */}
-        <AppLaunchBanner />
-
-        {/* How It Works & RouteEngine USP */}
-        <HowItWorks />
-
-        {/* Ecosystem Onboarding: Restaurants, Riders, Corporate */}
-        <PartnerSection />
-
-        {/* Frequently Asked Questions Accordion */}
-        <FaqSection />
-
-        {/* SEO Topical Knowledge & Hyperlocal City Coverage */}
-        <SeoContentSection />
+        <Hero />
+        <Categories />
+        <Features />
+        <AppDownload />
+        <Faq />
       </main>
-
-      {/* Modern Deliveroo-Grade Footer */}
       <Footer />
-
-      {/* Interactive Global Modals & Drawers */}
-      <CartDrawer />
-      <RestaurantMenuModal />
-      <LiveTrackingModal />
-      <PartnerModal />
-      <AuthModal />
-      <AddressModal />
-      <Toast />
+      <MobileAppBar />
     </div>
   );
 }

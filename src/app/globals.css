@@ -20,6 +20,10 @@
   --primary-dark: #0891b2;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 html,
 body {
   overflow-x: hidden;
